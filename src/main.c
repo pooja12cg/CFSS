@@ -1,43 +1,40 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 #define BUFFER 25
 typedef struct personalDetails
 {
-	int phNo[10];
+	int phNo;
 	char uName[BUFFER];
 	char simType[BUFFER];
 }PD;
 
-void getUserDetails(PD *);
-int dispUserDetails(PD *);
-int regist(PD *, char, int);
-int activate();
-int deactivate();
-int unregister();
 
-int regist(PD *p,char uName,int phNo)
+int getUserDetails(PD *);
+
+
+
+int getUserDetails(PD *p)
 {
+	
 	printf("\n----------USER REGISTERATION--------------\n");
 	
 	printf("\nEnter User Name: ");
 	scanf("\n%s",p->uName);
-	getchar();
+	getchar();	
 	printf("\nEnter Sim Type: ");
 	scanf("\n%s",p->simType);
-	
+
 	printf("\nEnter phone number: ");
 	scanf("\n%d",&p->phNo);
-	return 0;
-
+	return 1;
 }
 
 int main()
 {
 	PD *p=NULL;
-	char _uName;
-	int _phNo;
-	int choice=1;
-	regist(p,_uName,_phNo);
+	/*int choice=1;*/
+	getUserDetails(p);
 	/*while(1)
 	{
 		switch(choice)
@@ -46,7 +43,6 @@ int main()
 			       regist(p,_uName,_phNo);	       
 			break;			
 		}*/
-
-	return 0;
+return 0;
 }
 
