@@ -39,26 +39,26 @@ void dispUD(UD *ud)
 	printf("%s",ud->_uname);
 }
 
-UD* Login(UD *ud)
+LD* Login(LD *ld)
 {
-	ud=(UD *)malloc(sizeof(UD));
+	ld=(LD *)malloc(sizeof(LD));
 	printf("\n\tEnter your User Name:");
 	getchar();
-	scanf("%[^\n]s",ud->_uname);
+	scanf("%[^\n]s",ld->_uname);
 	/*phonevalidate(_uphnno);*/
 	printf("\n\tEnter your Password:");
-	scanf("%d",&ud->_uphnno);
+	scanf("%d",&ld->_uphnno);
 	/*fgets(ud->_uname,1024,stdin);
 	ud->_uname[strlen(ud->_uname)-1]='\0';
 	getchar();
 	printf("\n\n");*/
-	return ud;
+	return ld;
 }
 int writeUD(UD *ud)
 {
 	FILE *fp=NULL;
 
-	fp=fopen("UD.dat","r+");
+	fp=fopen("UD.dat","r");
 	if(fp==NULL)
 	{
 		perror("\n\tfopen() ");

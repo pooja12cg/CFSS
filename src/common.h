@@ -16,11 +16,10 @@ typedef struct  loginDetails
 {
 	int _uphnno;
 	char _uname[30];
-	int  _password;
 }LD;
 void Welcome();
 UD * signUp(UD *);
-UD * Login(UD *);
+LD * Login(LD *);
 int sinIn(LD *);
 int readUD(UD *);
 int readLD(LD *);

@@ -13,6 +13,8 @@ int main()
 	UD *ud=NULL;
 	LD *ld=NULL;
 	int ch =0;
+	int opt=0;
+	int option=0;
 	while(1)
 	{
 		Welcome();
@@ -27,32 +29,54 @@ int main()
 				dispUD(ud);
 				writeUD(ud);
 				readUD(ud);
-				break;
 			case 2:
-				ud=Login(ud);
+				ld=Login(ld);
 				printf("\n\t********************* LOGIN PAGE************************\n\n");
+				/*if(strcmp(ud->_uname,ld->_uname)!=0)
+				{
+					printf("Invalid User Name ");
+					ld=Login(ld);
+				}*/
+				char Sub_menu[]="\n\t Choose your Option \n\t 1. Opt for Call forwarding service \n\t 2. Deregister \n\t Choice : ";
+				printf("%s", Sub_menu);
+				scanf("%d",&opt);
 
-				/*
-				printf("\n\t Call forwarding services are available\n\n");
-				printf("\n\t Which type of call forwarding service you want?\n");
-				printf("\n\t Press 1: If you want unconditional type \n\t Press 2: If you want for no reply service \n\t Press 3: If you want service for Busy");
-				printf("\n\tEnter your choice:");
-				scanf("%d",&ch);
-				switch(ch)
+				switch(opt)
 				{
 					case 1:
-						printf("\n\tUnconditional Call Forwarding  ");
+						printf("\n\t Call forwarding services are available\n\n");
+						printf("\n\t Which type of call forwarding service you want?\n");
+						printf("\n\t Press 1: If you want unconditional type \n\t Press 2: If you want for no reply service \n\t Press 3: If you want service for Busy");
+						printf("\n\tEnter your choice:");
+						scanf("%d",&option);
+						switch(option)
+						{		
+							case 1:
+								printf("\n\tUnconditional Call Forwarding \n ");
+								break;
+							case 2:
+								printf("\n\tCall is forwaded as No Reply\n ");
+								break;
+							case 3:
+								printf("\n\tCall is forwaded as Busy\n ");
+								break;
+							default:
+								printf("\n\tEnter a correct choice\n ");
+						}
+
 						break;
-					case 2:
-						printf("\n\tCall is forwaded as No Reply ");
-						break;
-					case 3:
-						printf("\n\tCall is forwaded as Busy ");
-						break;
+
+
+					/*case 2:*/
+
 					default:
-						printf("\n\tEnter a correct choice ");
+						printf("\n\tEnter a correct choice\n ");
+						
+
 				}
-				break;*/
+
+
+
 			case 3:
 				exit(EXIT_SUCCESS);
 			default:
