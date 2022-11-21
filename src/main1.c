@@ -39,7 +39,7 @@ int main()
 		system("clear");
 		Welcome();
 		printf("\n\tMAIN MENU***********\n");
-		char Main_menu[]="\n\tChoose you option\n\n\t 1.New User Registration\n\t 2.Login\n\t 3.Display \n\t 4.Exit\n\t Choice:";
+		char Main_menu[]="\n\tChoose you option\n\n\t 1.New User Registration\n\t 2.Login\n\t 3.Display\n\t 4.Admin Login \n\t 5.Exit \n\t Choice:";
 		printf("%s", Main_menu);
 		scanf("%d",&ch);
 		//ch = dispMainMenu();
@@ -135,9 +135,37 @@ int main()
 				dispLD(headld);
 				sleep(2);
 				break;
-
-
 			case 4:
+				if(Login(headld) == 0)
+				{
+					printf("\n\t User does not match with database\n");/*printing formatted output*/
+					break;
+				}
+				else
+				{
+					printf("\n\tPress 1 to Update \n\tPress 2 to Add \n\tPress 3 to Delete \n");
+					printf("\n\tEnter your Choice : ");
+					scanf("%d",&opt);/*reads input*/
+					switch(opt)
+					{
+						case 1:
+							printf("\n\tUpdated \n ");/*printing formatted output*/
+							break;
+						case 2:
+							printf("\n\tUser Added\n ");/*printing formatted output*/
+							break;
+						case 3:
+							printf("\n\tUser Deleted\n ");/*printing formatted output*/
+							break;
+						default:
+							printf("\n\tEnter a correct choice\n ");/*printing formatted output*/
+					}
+
+				}
+
+
+
+			case 5:
 				//write(headud);
 				//write(headld);
 				printf("\n\tThankyou for visiting our Call Forwarding System Simulator\n");
