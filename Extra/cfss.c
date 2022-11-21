@@ -32,10 +32,10 @@ UD* signUp(UD *ud)
 }*/
 void dispUD(UD *ud)
 {
-	printf("\n\tDisplaying all Details");
-	printf("\n\tMobile number:");
+	printf("\n\tDisplaying all Details\n");
+	printf("\n\tMobile number: ");
 	printf("%d",ud->_uphnno);
-	printf("\n\tName:");
+	printf("\n\tName: ");
 	printf("%s",ud->_uname);
 }
 
@@ -48,12 +48,20 @@ LD* Login(LD *ld)
 	/*phonevalidate(_uphnno);*/
 	printf("\n\tEnter your Password:");
 	scanf("%d",&ld->_uphnno);
-	/*fgets(ud->_uname,1024,stdin);
+	/*pos = findUser(ud,NoOfUsers,_uphnno);
+	if(pos==-1)
+		printf("Invalid username or password");
+	else
+	{	printf("Logging in ");
+
+	}
+	fgets(ud->_uname,1024,stdin);
 	ud->_uname[strlen(ud->_uname)-1]='\0';
 	getchar();
 	printf("\n\n");*/
 	return ld;
 }
+//void findUser()
 int writeUD(UD *ud)
 {
 	FILE *fp=NULL;
@@ -88,4 +96,5 @@ int readUD(UD *ud)
 		printf("\n\tRead Buff:%s",tmpBuff);
 	}
 	fclose(fp);
+
 }
