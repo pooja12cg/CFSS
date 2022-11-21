@@ -27,8 +27,11 @@ int main()
 
 	while(1)
 	{
+
+		system("clear");
 		Welcome();
-		char Main_menu[]="\n\tChoose you option\n\t 1.SingUp\n\t 2.SignIn\n\t 3.Exit\n\t Choice:";
+		printf("\n\tMAIN MENU***********\n");
+		char Main_menu[]="\n\tChoose you option\n\n\t 1.SingUp\n\t 2.SignIn\n\t 3.Exit\n\t Choice:";
 		printf("%s", Main_menu);
 		scanf("%d",&ch);
 		//ch = dispMainMenu();
@@ -37,7 +40,7 @@ int main()
 		{
 			case 1:
 				headud = signUp(headud, &_uphnno);
-				headld = signInDetails(headld, &_uphnno);
+				headld = signInDetails(headld, _uphnno);
 				printf("\n\t SUCCESSFULLY REGISTERED\n");
 				dispUD(headud);
 				break;
@@ -64,7 +67,7 @@ int main()
 					printf("Invalid User Name ");
 					ld=Login(ld);*/
 				
-				char Sub_menu[]="\n\t Choose your Option \n\t 1. Opt for Call forwarding service \n\t 2. Deregister \n\t Choice : ";
+				char Sub_menu[]="\n\t Choose your Option \n\n\t 1. Opt for Call forwarding service \n\t 2. Deregister \n\n\t Choice : ";
 				printf("%s", Sub_menu);
 				scanf("%d",&opt);
 				//opt = dispSubMenu();
@@ -115,6 +118,8 @@ int main()
 						
 
 				}
+
+				break;
 
 
 
