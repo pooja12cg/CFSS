@@ -26,8 +26,8 @@ int main()
 	int _uphnno =0;/*holds phone number */
 	int act =0;/*active=1 when user is active ,active=0 when user is inactive */
 
-	int ch =0;/*holds the choice variable*/
-	int opt=0;/*holds the option to be selected*/
+	int ch =0;
+	int opt=0;
 	headud = loadUD(ud);
 	ud =headud;/*base address and head of list is pointing to same in userDetails structure*/
 	headld = loadLD(ld);
@@ -35,19 +35,23 @@ int main()
 
 	while(1)
 	{
-		Welcome();/*Welcome function calling*/
-		char Main_menu[]="\n\tChoose you option\n\t 1.SingUp\n\t 2.SignIn\n\t 3.Exit\n\t Choice:";
-		printf("%s", Main_menu);/*printing in a formatted output*/
-		scanf("%d",&ch);/*Reading the input*/
+
+		system("clear");
+		Welcome();
+		printf("\n\tMAIN MENU***********\n");
+		char Main_menu[]="\n\tChoose you option\n\n\t 1.New User Registration\n\t 2.Login\n\t 3.Display\n\t 4.Admin Login \n\t 5.Exit \n\t Choice:";
+		printf("%s", Main_menu);
+		scanf("%d",&ch);
 		//ch = dispMainMenu();
 
 		switch(ch)
 		{
 			case 1:
-				headud = signUp(headud, &_uphnno);/*pointing the pointer to signUp*/
-				headld = signInDetails(headld, &_uphnno);/*pointing the pointer to signInDetails*/ 
-				printf("\n\t SUCCESSFULLY REGISTERED\n");/*printing formatted output*/
-				dispUD(headud);/*function calling by passing a pointer*/
+				headud = signUp(headud, &_uphnno);
+				headld = signInDetails(headld, _uphnno);
+				printf("\n\t SUCCESSFULLY REGISTERED\n");
+				dispUD(headud);
+				sleep(2);
 				break;
 
 				/*ud=signUp(ud);
@@ -72,9 +76,9 @@ int main()
 					printf("Invalid User Name ");
 					ld=Login(ld);*/
 				
-				char Sub_menu[]="\n\t Choose your Option \n\t 1. Opt for Call forwarding service \n\t 2. Deregister \n\t Choice : ";
-				printf("%s", Sub_menu);/*printing formatted output*/
-				scanf("%d",&opt);/*reads input*/
+				char Sub_menu[]="\n\t Choose your Option \n\n\t 1. Opt for Call forwarding service \n\t 2. Deregister \n\n\t Choice : ";
+				printf("%s", Sub_menu);
+				scanf("%d",&opt);
 				//opt = dispSubMenu();
 				switch(opt)
 				{
@@ -87,7 +91,7 @@ int main()
 						switch(opt)
 						{		
 							case 1:
-								printf("\n\tUnconditional Call Forwarding \n "0);/*printing formatted output*/
+								printf("\n\tUnconditional Call Forwarding \n ");/*printing formatted output*/
 								break;
 							case 2:
 								printf("\n\tCall is forwaded as No Reply\n ");/*printing formatted output*/
@@ -123,14 +127,51 @@ int main()
 						
 
 				}
+				sleep(2);
 
-
-
+				break;
 			case 3:
-				printf("\n\tThankyou for visiting our Call Forwarding System Simulator\n");/*printing formatted output*/
-				exit(EXIT_SUCCESS);/*printing formatted output*/
+				dispUD(headud);
+				dispLD(headld);
+				sleep(2);
+				break;
+			case 4:
+				if(Login(headld) == 0)
+				{
+					printf("\n\t User does not match with database\n");/*printing formatted output*/
+					break;
+				}
+				else
+				{
+					printf("\n\tPress 1 to Update \n\tPress 2 to Add \n\tPress 3 to Delete \n");
+					printf("\n\tEnter your Choice : ");
+					scanf("%d",&opt);/*reads input*/
+					switch(opt)
+					{
+						case 1:
+							printf("\n\tUpdated \n ");/*printing formatted output*/
+							break;
+						case 2:
+							printf("\n\tUser Added\n ");/*printing formatted output*/
+							break;
+						case 3:
+							printf("\n\tUser Deleted\n ");/*printing formatted output*/
+							break;
+						default:
+							printf("\n\tEnter a correct choice\n ");/*printing formatted output*/
+					}
+
+				}
+
+
+
+			case 5:
+				//write(headud);
+				//write(headld);
+				printf("\n\tThankyou for visiting our Call Forwarding System Simulator\n");
+				exit(EXIT_SUCCESS);
 			default:
-				printf("\n\t Enter a correct choice among 1,2,3\n");/*printing formatted output*/
+				printf("\n\t Enter a correct choice \n");
 		}	
 	}
 	printf("\n\n");/*printing two new lines*/

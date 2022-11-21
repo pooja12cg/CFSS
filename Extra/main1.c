@@ -31,7 +31,7 @@ int main()
 		system("clear");
 		Welcome();
 		printf("\n\tMAIN MENU***********\n");
-		char Main_menu[]="\n\tChoose you option\n\n\t 1.SingUp\n\t 2.SignIn\n\t 3.Exit\n\t Choice:";
+		char Main_menu[]="\n\tChoose you option\n\n\t 1.New User Registration\n\t 2.Login\n\t 3.Display \n\t 4.Exit\n\t Choice:";
 		printf("%s", Main_menu);
 		scanf("%d",&ch);
 		//ch = dispMainMenu();
@@ -109,7 +109,6 @@ int main()
 						else
 						{
 							printf("\n\tActive\n");
-							break;
 
 						}
 
@@ -120,10 +119,13 @@ int main()
 				}
 
 				break;
-
-
-
 			case 3:
+				dispUD(headud);
+				break;
+
+
+
+			case 4:
 				printf("\n\tThankyou for visiting our Call Forwarding System Simulator\n");
 				exit(EXIT_SUCCESS);
 			default:
