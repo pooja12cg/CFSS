@@ -26,13 +26,8 @@ int main()
 	int _uphnno =0;/*holds phone number */
 	int act =0;/*active=1 when user is active ,active=0 when user is inactive */
 
-<<<<<<< HEAD
 	int ch =0;
 	int opt=0;
-=======
-	int ch =0;/*holds the choice variable*/
-	int opt=0;/*holds the option to be selected*/
->>>>>>> c374c1ff3591cc90dbc5305a4b54a70e19f02cf6
 	headud = loadUD(ud);
 	ud =headud;/*base address and head of list is pointing to same in userDetails structure*/
 	headld = loadLD(ld);
@@ -40,7 +35,6 @@ int main()
 
 	while(1)
 	{
-<<<<<<< HEAD
 
 		system("clear");
 		Welcome();
@@ -48,29 +42,16 @@ int main()
 		char Main_menu[]="\n\tChoose you option\n\n\t 1.New User Registration\n\t 2.Login\n\t 3.Display \n\t 4.Exit\n\t Choice:";
 		printf("%s", Main_menu);
 		scanf("%d",&ch);
-=======
-		Welcome();/*Welcome function calling*/
-		char Main_menu[]="\n\tChoose you option\n\t 1.SingUp\n\t 2.SignIn\n\t 3.Exit\n\t Choice:";
-		printf("%s", Main_menu);/*printing in a formatted output*/
-		scanf("%d",&ch);/*Reading the input*/
->>>>>>> c374c1ff3591cc90dbc5305a4b54a70e19f02cf6
 		//ch = dispMainMenu();
 
 		switch(ch)
 		{
 			case 1:
-<<<<<<< HEAD
 				headud = signUp(headud, &_uphnno);
 				headld = signInDetails(headld, _uphnno);
 				printf("\n\t SUCCESSFULLY REGISTERED\n");
 				dispUD(headud);
 				sleep(2);
-=======
-				headud = signUp(headud, &_uphnno);/*pointing the pointer to signUp*/
-				headld = signInDetails(headld, &_uphnno);/*pointing the pointer to signInDetails*/ 
-				printf("\n\t SUCCESSFULLY REGISTERED\n");/*printing formatted output*/
-				dispUD(headud);/*function calling by passing a pointer*/
->>>>>>> c374c1ff3591cc90dbc5305a4b54a70e19f02cf6
 				break;
 
 				/*ud=signUp(ud);
@@ -95,15 +76,9 @@ int main()
 					printf("Invalid User Name ");
 					ld=Login(ld);*/
 				
-<<<<<<< HEAD
 				char Sub_menu[]="\n\t Choose your Option \n\n\t 1. Opt for Call forwarding service \n\t 2. Deregister \n\n\t Choice : ";
 				printf("%s", Sub_menu);
 				scanf("%d",&opt);
-=======
-				char Sub_menu[]="\n\t Choose your Option \n\t 1. Opt for Call forwarding service \n\t 2. Deregister \n\t Choice : ";
-				printf("%s", Sub_menu);/*printing formatted output*/
-				scanf("%d",&opt);/*reads input*/
->>>>>>> c374c1ff3591cc90dbc5305a4b54a70e19f02cf6
 				//opt = dispSubMenu();
 				switch(opt)
 				{
@@ -116,7 +91,7 @@ int main()
 						switch(opt)
 						{		
 							case 1:
-								printf("\n\tUnconditional Call Forwarding \n "0);/*printing formatted output*/
+								printf("\n\tUnconditional Call Forwarding \n ");/*printing formatted output*/
 								break;
 							case 2:
 								printf("\n\tCall is forwaded as No Reply\n ");/*printing formatted output*/
@@ -142,12 +117,8 @@ int main()
 						}
 						else/*condition checks if the user is active*/
 						{
-<<<<<<< HEAD
-							printf("\n\tActive\n");
-=======
 							printf("\n\tActive\n");/*printing formatted output*/
 							break;
->>>>>>> c374c1ff3591cc90dbc5305a4b54a70e19f02cf6
 
 						}
 
@@ -166,8 +137,6 @@ int main()
 				break;
 
 
-
-<<<<<<< HEAD
 			case 4:
 				//write(headud);
 				//write(headld);
@@ -175,13 +144,6 @@ int main()
 				exit(EXIT_SUCCESS);
 			default:
 				printf("\n\t Enter a correct choice \n");
-=======
-			case 3:
-				printf("\n\tThankyou for visiting our Call Forwarding System Simulator\n");/*printing formatted output*/
-				exit(EXIT_SUCCESS);/*printing formatted output*/
-			default:
-				printf("\n\t Enter a correct choice among 1,2,3\n");/*printing formatted output*/
->>>>>>> c374c1ff3591cc90dbc5305a4b54a70e19f02cf6
 		}	
 	}
 	printf("\n\n");/*printing two new lines*/
