@@ -29,7 +29,7 @@ int main()
 	while(1)
 	{
 		Welcome();
-		char Main_menu[]="\n\tChoose you option\n\t 1.SingUp\n\t 2.SignIn\n\t 3.Exit\n\t Choice:";
+		char Main_menu[]="\n\t Main Menu\n\t 1.New User Registration\n\t 2.Login\n\t 3.Exit\n\t Enter your choice:";
 		printf("%s", Main_menu);
 		scanf("%d",&ch);
 		//ch = dispMainMenu();
