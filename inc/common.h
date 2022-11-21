@@ -1,3 +1,20 @@
+<<<<<<< HEAD
+=======
+/*******************************************************************************
+**	FILE NAME       :	common.h
+**
+**	DESCRIPTION	:	this file includes standard header files, macros definition,
+**				structure prototype, global variables, function prototypes
+**				which are utilized in main1.c and common.c	
+** 						
+** DATE		 NAME		     REFERENCE		REASON
+**
+**21-11-2022    Group04	                New	    Initial Version          
+**
+**
+**  Copyright 2010, Aricent Technologies (Holdings) Ltd
+*********************************************************************************/
+>>>>>>> c374c1ff3591cc90dbc5305a4b54a70e19f02cf6
 
 #ifndef COMMON_H
 #define COMMON_H
