@@ -1,10 +1,43 @@
+
+/*************************************************************************
+* *
+* *  FILE NAME    : common.c
+* *
+* *  DESCRIPTION  : This program demonstrated how all function definitions are implemented
+* *		  
+* *
+* *    DATE        NAME    REFERENCE          REASON
+* *
+* * 21-11-2022   Group04     New          Initial Creation.
+* *
+* *  Copyright 2010, Aricent Technologies (Holdings) Ltd
+* *
+* * **************************************************************************/
+
+/*************************************************************************
+* *				HEADER FILES
+* *************************************************************************/
 #include <common.h>
 
+/******************************************************************************
+* *
+* *       Function Name   : Welcome
+* *       Description     : It prints formatted output
+* *       Returns         : Nothing 
+* *
+* *******************************************************************************/
 void Welcome()
 {
-	printf("\n\t WELCOME TO CFSS\n");
+	printf("\n\t ---------------WELCOME TO CFSS------------------\n");/*reads a single character from the standard input stream stdin*/
 }
 
+/******************************************************************************
+* *
+* *       Function Name   : signUp
+* *       Description     : It demonstrates user registration with application  to request for call forwarding service
+* *       Returns         : Success or Failure
+* *
+* *******************************************************************************/
 UD* signUp(UD *ud, int *_uphnno)
 {
 	UD *newNode =NULL;
@@ -19,7 +52,7 @@ UD* signUp(UD *ud, int *_uphnno)
 		//no records
 		head = newNode;
 		ud = newNode;
-		printf("\n\tNNPD");
+		printf("\n");
 	}
 	else
 	{
@@ -29,20 +62,20 @@ UD* signUp(UD *ud, int *_uphnno)
 
 		ud->next = newNode;
 		ud = ud->next;
-		printf("\n\tNoNPD");
+		printf("\n");
 	}
 
 	//pd = newNode;
 
-	printf("\n\tEnter ID: ");
-	scanf("%d",&newNode->_uphnno);
-	printf("\n\tEnter Name: ");
-	getchar();
+	printf("\n\tEnter ID: ");/*printing formatted output*/
+	scanf("%d",&newNode->_uphnno);/*reads input*/
+	printf("\n\tEnter Name: ");/*printing formatted output*/
+	getchar();/*reads a single character from the standard input stream stdin*/
 	
 	// fgets(pd->_name, 256,stdin);
 	// removeTrailing(pd->_name);
 	
-	scanf("%[^\n]s",newNode->_uname);
+	scanf("%[^\n]s",newNode->_uname);/*reads input*/
 	/*printf("\n\tEnter Gender (M/F/O): ");
 	getchar();
 	scanf("%c",&newNode->_gender);*/
@@ -51,7 +84,13 @@ UD* signUp(UD *ud, int *_uphnno)
 	return head;
 }
 
-
+/******************************************************************************
+ * *
+ * *       Function Name   : signInDetails
+ * *       Description     : Demonstrates user login after registration
+ * *       Returns         : Success or Failure
+ * *
+ * *******************************************************************************/
 LD* signInDetails(LD *ld, int *_uphnno)
 {
 	LD *newNode =NULL;
@@ -63,14 +102,14 @@ LD* signInDetails(LD *ld, int *_uphnno)
 	
 	if(head == NULL)
 	{
-		//no records
+		/*no records*/
 		head = newNode;
 		ld = newNode;
 		printf("\n\tNNPD");
 	}
 	else
 	{
-		//records are present
+		/*records are present*/
 		while(ld->next != NULL)
 			ld = ld->next;
 
@@ -81,38 +120,50 @@ LD* signInDetails(LD *ld, int *_uphnno)
 
 	
 
-	// printf("\n\tEnter ID: ");
-	// scanf("%d",&newNode->_id);
+	/* printf("\n\tEnter ID: ");*/
+	/* scanf("%d",&newNode->_id);*/
 	newNode->_uphnno = _uphnno;
-	printf("\n\tEnter User Name: ");
-	getchar();
+	printf("\n\tEnter User Name: ");/*printing formatted output*/
+	getchar();/*reads a single character from the standard input stream stdin*/
 	
-	// fgets(pd->_name, 256,stdin);
-	// removeTrailing(pd->_name);
+	/* fgets(pd->_name, 256,stdin);*/
+	/* removeTrailing(pd->_name);*/
 	
-	scanf("%s",newNode->_uname);
-	printf("\n\tEnter Password: ");
-	getchar();
-	scanf("%s",newNode->_passwd);
+	scanf("%s",newNode->_uname);/*reads input*/
+	printf("\n\tEnter Password: ");/*printing formatted output*/
+	getchar();/*reads a single character from the standard input stream stdin*/
+	scanf("%s",newNode->_passwd);/*reads input*/
 	
 	
 	return head;
 }
-
+/******************************************************************************
+ * *
+ * *       Function Name   : dispUD
+ * *       Description     : It displays User Details based on user registration
+ * *       Returns         : Success or Failure
+ * *
+ * *******************************************************************************/
 void dispUD(UD *ud)
 {
 	while(ud != NULL){
-		printf("\n\tID: ");
-		printf("%d",ud->_uphnno);
-		printf("\tName: ");
-		printf("%s",ud->_uname);
+		printf("\n\tID: ");/*printing formatted output*/
+		printf("%d",ud->_uphnno);/*display formatted output*/
+		printf("\tName: ");/*printing formatted output*/
+		printf("%s",ud->_uname);/*display formatted output*/
 		//printf("\tGender (M/F/O): ");
 		//printf("%c",pd->_gender);
 		ud = ud->next;
 	}
 }
 
-
+/******************************************************************************
+ * *
+ * *       Function Name   : dispLD
+ * *       Description     : It displays login details based on user login information
+ * *       Returns         : Success or Failure
+ * *
+ * *******************************************************************************/
 void dispLD(LD *ld)
 {
 	while(ld != NULL){
@@ -125,7 +176,13 @@ void dispLD(LD *ld)
 		ld = ld->next;
 	}
 }
-
+/******************************************************************************
+ * *
+ * *       Function Name   : writeUD
+ * *       Description     : Demonstration of File Handling Operations
+ * *       Returns         : Success or Failure
+ * *
+ * *******************************************************************************/
 int writeUD(UD *ud)
 {
 	FILE *fp = NULL;
@@ -139,7 +196,7 @@ int writeUD(UD *ud)
 
 	//fseek(fp, 0L, SEEK_END);
 	if(ud == NULL)
-		printf("\n\t NULL Write ud");
+		printf("\n\t NULL Write ud");/*printing formatted output*/
 	while(ud != NULL){
 		fprintf(fp,"%d, %s\n",ud->_uphnno,ud->_uname);
 		//fprintf(stdout,"%d, %s, %c\n",pd->_id,pd->_name,pd->_gender);
@@ -150,7 +207,13 @@ int writeUD(UD *ud)
 
 	
 }
-
+/******************************************************************************
+ * *
+ * *       Function Name   : writeLD
+ * *       Description     : Demonstration of File Handling Operations
+ * *       Returns         : Success or Failure
+ * *
+ * *******************************************************************************/
 int writeLD(LD *ld)
 {
 	FILE *fp = NULL;
@@ -164,7 +227,7 @@ int writeLD(LD *ld)
 
 	//fseek(fp, 0L, SEEK_END);
 	if(ld == NULL)
-		printf("\n\t NULL Write pd");
+		printf("\n\t NULL Write pd");/*printing formatted output*/
 	while(ld != NULL){
 		//printf("\n%d = %c", ld->_passwd[strlen(ld->_passwd)-1],ld->_passwd[strlen(ld->_passwd)-1]);
 		fprintf(fp,"%d, %s, %s\n",ld->_uphnno,ld->_uname,ld->_passwd);
@@ -176,7 +239,13 @@ int writeLD(LD *ld)
 	
 }
 
-
+/******************************************************************************
+ * *
+ * *       Function Name   : loadUD
+ * *       Description     : Demonstration of File Handling Operations
+ * *       Returns         : Success or Failure
+ * *
+ * *******************************************************************************/
 UD* loadUD()
 {
 	FILE *fp = NULL;
@@ -238,7 +307,13 @@ UD* loadUD()
 
 }
 
-
+/******************************************************************************
+ * *
+ * *       Function Name   : loadLD
+ * *       Description     : Demonstration of Filehandling Operations
+ * *       Returns         : Success or Failure
+ * *
+ * *******************************************************************************/
 LD* loadLD()
 {
 	FILE *fp = NULL;
@@ -299,7 +374,13 @@ LD* loadLD()
 	return head;
 
 }
-
+/******************************************************************************
+ * *
+ * *       Function Name   : readPD
+ * *       Description     : Demonstration of File Handling Operations
+ * *       Returns         : Success or Failure
+ * *
+ * *******************************************************************************/
 int readPD(UD *ud)
 {
 	FILE *fp = NULL;
@@ -326,7 +407,13 @@ int readPD(UD *ud)
 
 
 }
-
+/******************************************************************************
+ * *
+ * *       Function Name   : tokenizeUD
+ * *       Description     : Demonstration of File Handling Operations
+ * *       Returns         : Success or Failure
+ * *
+ * *******************************************************************************/
 int tokenizeUD(UD *ud, char *tmpBuff)
 {
 	char *tokens;
@@ -347,7 +434,13 @@ int tokenizeUD(UD *ud, char *tmpBuff)
 	//dispPD(pd);
 }
 
-
+/******************************************************************************
+ * *
+ * *       Function Name   : tokenizeLD
+ * *       Description     : Demonstration of File Handling Operations
+ * *       Returns         : Success or Failure
+ * *
+ * *******************************************************************************/
 int tokenizeLD(LD *ld, char *tmpBuff)
 {
 	char *tokens;
@@ -365,7 +458,13 @@ int tokenizeLD(LD *ld, char *tmpBuff)
 	removeTrailing(ld->_passwd);
 	//dispPD(pd);
 }
-
+/******************************************************************************
+ * *
+ * *       Function Name   : removeLeading
+ * *       Description     : 
+ * *       Returns         : Success or Failure
+ * *
+ * *******************************************************************************/
 void removeLeading(char *str, char *str1)
 {
     int idx = 0, j, k = 0;
@@ -392,7 +491,13 @@ void removeLeading(char *str, char *str1)
     // Print the string with no whitespaces
     //printf("%s", str1);
 }
-
+/******************************************************************************
+ * *
+ * *       Function Name   : removeTrailing
+ * *       Description     : 
+ * *       Returns         : Success or Failure
+ * *
+ * *******************************************************************************/
 void removeTrailing(char *str)
 {
 	if((str[strlen(str)-1] == ' ' || str[strlen(str)-1] == '\t' || str[strlen(str)-1] == '\n'))
@@ -401,15 +506,21 @@ void removeTrailing(char *str)
     }
 
 }
-
+/******************************************************************************
+* *
+* *       Function Name   : Login
+* *       Description     : Application shall allow users to register or unregister for call forwarding service initially before enabling or disabling the				   service.  
+* *       Returns         : Success or Failure
+* *
+* *******************************************************************************/
 int Login(LD *head)
 {
-	LD _ld;
-	int flag = 0;
+	LD _ld;/*variable declared for the loginDetails structure*/
+	int flag = 0;/*initially flag is low*/
 	
-	printf("\n\tEnter User Name: ");
+	printf("\n\tEnter User Name: ");/*printing formatted output*/
 	scanf("%s", _ld._uname);
-	printf("\n\tEnter Password: ");
+	printf("\n\tEnter Password: ");/*printing formatted output*/
 	scanf("%s",_ld._passwd);
 	while(head != NULL)
 	{
