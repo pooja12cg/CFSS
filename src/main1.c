@@ -19,7 +19,6 @@ int main()
 
 	int ch =0;
 	int opt=0;
-	int option=0;
 	headud = loadUD(ud);
 	ud =headud;
 	headld = loadLD(ld);
@@ -27,8 +26,11 @@ int main()
 
 	while(1)
 	{
+
+		system("clear");
 		Welcome();
-		char Main_menu[]="\n\tChoose you option\n\t 1.SingUp\n\t 2.SignIn\n\t 3.Exit\n\t Choice:";
+		printf("\n\tMAIN MENU***********\n");
+		char Main_menu[]="\n\tChoose you option\n\n\t 1.New User Registration\n\t 2.Login\n\t 3.Display \n\t 4.Exit\n\t Choice:";
 		printf("%s", Main_menu);
 		scanf("%d",&ch);
 		//ch = dispMainMenu();
@@ -37,9 +39,10 @@ int main()
 		{
 			case 1:
 				headud = signUp(headud, &_uphnno);
-				headld = signInDetails(headld, &_uphnno);
+				headld = signInDetails(headld, _uphnno);
 				printf("\n\t SUCCESSFULLY REGISTERED\n");
 				dispUD(headud);
+				sleep(2);
 				break;
 
 				/*ud=signUp(ud);
@@ -64,7 +67,7 @@ int main()
 					printf("Invalid User Name ");
 					ld=Login(ld);*/
 				
-				char Sub_menu[]="\n\t Choose your Option \n\t 1. Opt for Call forwarding service \n\t 2. Deregister \n\t Choice : ";
+				char Sub_menu[]="\n\t Choose your Option \n\n\t 1. Opt for Call forwarding service \n\t 2. Deregister \n\n\t Choice : ";
 				printf("%s", Sub_menu);
 				scanf("%d",&opt);
 				//opt = dispSubMenu();
@@ -106,7 +109,6 @@ int main()
 						else
 						{
 							printf("\n\tActive\n");
-							break;
 
 						}
 
@@ -115,14 +117,24 @@ int main()
 						
 
 				}
+				sleep(2);
 
-
-
+				break;
 			case 3:
+				dispUD(headud);
+				dispLD(headld);
+				sleep(2);
+				break;
+
+
+
+			case 4:
+				//write(headud);
+				//write(headld);
 				printf("\n\tThankyou for visiting our Call Forwarding System Simulator\n");
 				exit(EXIT_SUCCESS);
 			default:
-				printf("\n\t Enter a correct choice among 1,2,3\n");
+				printf("\n\t Enter a correct choice \n");
 		}	
 	}
 	printf("\n\n");

@@ -2,7 +2,9 @@
 
 void Welcome()
 {
-	printf("\n\t WELCOME TO CFSS\n");
+	printf("\n\t********************************************************************************************************************\n");
+	printf("\n\t*************************************************WELCOME TO CFSS****************************************************\n");
+	printf("\n\t********************************************************************************************************************\n");
 }
 
 UD* signUp(UD *ud, int *_uphnno)
@@ -19,7 +21,6 @@ UD* signUp(UD *ud, int *_uphnno)
 		//no records
 		head = newNode;
 		ud = newNode;
-		printf("\n\tNNPD");
 	}
 	else
 	{
@@ -29,12 +30,11 @@ UD* signUp(UD *ud, int *_uphnno)
 
 		ud->next = newNode;
 		ud = ud->next;
-		printf("\n\tNoNPD");
 	}
 
 	//pd = newNode;
 
-	printf("\n\tEnter ID: ");
+	printf("\n\tEnter User Phone Number: ");
 	scanf("%d",&newNode->_uphnno);
 	printf("\n\tEnter Name: ");
 	getchar();
@@ -52,7 +52,7 @@ UD* signUp(UD *ud, int *_uphnno)
 }
 
 
-LD* signInDetails(LD *ld, int *_uphnno)
+LD* signInDetails(LD *ld, int _uphnno)
 {
 	LD *newNode =NULL;
 	LD *head = NULL;
@@ -66,7 +66,6 @@ LD* signInDetails(LD *ld, int *_uphnno)
 		//no records
 		head = newNode;
 		ld = newNode;
-		printf("\n\tNNPD");
 	}
 	else
 	{
@@ -76,7 +75,6 @@ LD* signInDetails(LD *ld, int *_uphnno)
 
 		ld->next = newNode;
 		ld = ld->next;
-		printf("\n\tNoNPD");
 	}
 
 	
@@ -102,7 +100,7 @@ LD* signInDetails(LD *ld, int *_uphnno)
 void dispUD(UD *ud)
 {
 	while(ud != NULL){
-		printf("\n\tID: ");
+		printf("\n\tPhone Number: ");
 		printf("%d",ud->_uphnno);
 		printf("\tName: ");
 		printf("%s",ud->_uname);
@@ -116,7 +114,7 @@ void dispUD(UD *ud)
 void dispLD(LD *ld)
 {
 	while(ld != NULL){
-		printf("\n\tID: ");
+		printf("\n\tPhone Number: ");
 		printf("%d",ld->_uphnno);
 		printf("\tUser Name: ");
 		printf("%s",ld->_uname);
@@ -164,7 +162,7 @@ int writeLD(LD *ld)
 
 	//fseek(fp, 0L, SEEK_END);
 	if(ld == NULL)
-		printf("\n\t NULL Write pd");
+		printf("\n\t NULL Write ld");
 	while(ld != NULL){
 		//printf("\n%d = %c", ld->_passwd[strlen(ld->_passwd)-1],ld->_passwd[strlen(ld->_passwd)-1]);
 		fprintf(fp,"%d, %s, %s\n",ld->_uphnno,ld->_uname,ld->_passwd);
@@ -186,7 +184,7 @@ UD* loadUD()
 	int _fSize = 0;
 	char tmpBuff[256] = {'\0', };
 	
-	fp = fopen("PD.dat","r");
+	fp = fopen("UD.data","r");
 	if(fp == NULL)
 	{
 		perror("\n\tfopen() ");
@@ -300,7 +298,7 @@ LD* loadLD()
 
 }
 
-int readPD(UD *ud)
+int readUD(UD *ud)
 {
 	FILE *fp = NULL;
 	char tmpBuff[256] = {'\0', };
@@ -326,12 +324,38 @@ int readPD(UD *ud)
 
 
 }
+int readLD(LD *ld)
+{
+	FILE *fp = NULL;
+	char tmpBuff[256] = {'\0', };
+	LD tmpld;
+
+	fp = fopen("LD.data","r");
+	if(fp == NULL)
+	{
+		perror("\n\tfopen() ");
+		return -1;
+	}
+
+	fseek(fp, 0L, SEEK_SET);
+	memset(tmpBuff,'\0', 256);
+	while(fgets(tmpBuff, 256, fp)){
+	
+		// printf("\n\tRead Buff: %s", tmpBuff);
+		tokenizeLD(&tmpld, tmpBuff);
+		memset(tmpBuff,'\0', 256);
+	}
+
+	fclose(fp);
+}
+
 
 int tokenizeUD(UD *ud, char *tmpBuff)
 {
 	char *tokens;
-	int i, count;
-	char *tmpBuff1;
+	/*int i;
+	int count;
+	char *tmpBuff1;*/
 
 	tokens = strtok(tmpBuff, ",");
 	ud->_uphnno = atoi(tokens);
@@ -351,8 +375,8 @@ int tokenizeUD(UD *ud, char *tmpBuff)
 int tokenizeLD(LD *ld, char *tmpBuff)
 {
 	char *tokens;
-	int i, count;
-	char *tmpBuff1;
+	/*int i, count;
+	char *tmpBuff1;*/
 
 	tokens = strtok(tmpBuff, ",");
 	ld->_uphnno = atoi(tokens);
