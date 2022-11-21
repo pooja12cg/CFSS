@@ -5,8 +5,12 @@
 **				structure prototype, global variables, function prototypes
 **				which are utilized in main1.c and common.c	
 ** 						
-**	 NAME		  DATE			   REFERENCE		REASON
-**	Group04		21-11-2022              Initial Version          
+** DATE		 NAME		     REFERENCE		REASON
+**
+**21-11-2022    Group04	                New	    Initial Version          
+**
+**
+**  Copyright 2010, Aricent Technologies (Holdings) Ltd
 *********************************************************************************/
 
 /********************************************************************************
