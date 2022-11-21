@@ -2,7 +2,9 @@
 
 void Welcome()
 {
-	printf("\n\t WELCOME TO CFSS\n");
+	printf("\n\t********************************************************************************************************************\n");
+	printf("\n\t*************************************************WELCOME TO CFSS****************************************************\n");
+	printf("\n\t********************************************************************************************************************\n");
 }
 
 UD* signUp(UD *ud, int *_uphnno)
@@ -50,7 +52,7 @@ UD* signUp(UD *ud, int *_uphnno)
 }
 
 
-LD* signInDetails(LD *ld, int *_uphnno)
+LD* signInDetails(LD *ld, int _uphnno)
 {
 	LD *newNode =NULL;
 	LD *head = NULL;
@@ -81,7 +83,7 @@ LD* signInDetails(LD *ld, int *_uphnno)
 
 	// printf("\n\tEnter ID: ");
 	// scanf("%d",&newNode->_id);
-	newNode->_uphnno = *_uphnno;
+	newNode->_uphnno = _uphnno;
 	printf("\n\tEnter User Name: ");
 	getchar();
 	
@@ -128,7 +130,7 @@ int writeUD(UD *ud)
 {
 	FILE *fp = NULL;
 
-	fp = fopen("UD.data","r+");
+	fp = fopen("UD.data","w+");
 	if(fp == NULL)
 	{
 		perror("\n\tfopen() ");
@@ -153,7 +155,7 @@ int writeLD(LD *ld)
 {
 	FILE *fp = NULL;
 
-	fp = fopen("LD.data","r+");
+	fp = fopen("LD.data","w+");
 	if(fp == NULL)
 	{
 		perror("\n\tfopen() ");
@@ -184,7 +186,7 @@ UD* loadUD()
 	int _fSize = 0;
 	char tmpBuff[256] = {'\0', };
 	
-	fp = fopen("PD.dat","r");
+	fp = fopen("UD.data","r");
 	if(fp == NULL)
 	{
 		perror("\n\tfopen() ");
@@ -328,7 +330,8 @@ int readPD(UD *ud)
 int tokenizeUD(UD *ud, char *tmpBuff)
 {
 	char *tokens;
-	int i, count;
+	int i;
+	int count;
 	char *tmpBuff1;
 
 	tokens = strtok(tmpBuff, ",");

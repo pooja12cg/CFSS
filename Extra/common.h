@@ -29,7 +29,7 @@ int dispMainMenu();
 UD *loadUD();
 LD *loadLD();
 UD * signUp(UD *, int*);
-LD * signInDetails(LD *, int*);
+LD * signInDetails(LD *, int);
 int Login(LD *);
 int readUD(UD *);
 int readLD(LD *);
