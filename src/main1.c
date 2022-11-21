@@ -1,9 +1,8 @@
-
-
 /************************
  *  *  ***********************
  *   *  *******FILE NAME: CFSS_MAIN.C*********
  *    *  *************************/
+
 #include <common.h>
 
 
@@ -29,7 +28,7 @@ int main()
 	while(1)
 	{
 		Welcome();
-		char Main_menu[]="\n\t Main Menu\n\t 1.New User Registration\n\t 2.Login\n\t 3.Exit\n\t Enter your choice:";
+		char Main_menu[]="\n\tChoose you option\n\t 1.SingUp\n\t 2.SignIn\n\t 3.Exit\n\t Choice:";
 		printf("%s", Main_menu);
 		scanf("%d",&ch);
 		//ch = dispMainMenu();
@@ -40,6 +39,7 @@ int main()
 				headud = signUp(headud, &_uphnno);
 				headld = signInDetails(headld, &_uphnno);
 				printf("\n\t SUCCESSFULLY REGISTERED\n");
+				dispUD(headud);
 				break;
 
 				/*ud=signUp(ud);
@@ -68,9 +68,9 @@ int main()
 				printf("%s", Sub_menu);
 				scanf("%d",&opt);
 				//opt = dispSubMenu();
-				/*switch(opt)
+				switch(opt)
 				{
-					case 1:*/
+					case 1:
 						printf("\n\t Call forwarding services are available");
 						printf("\n\t Which type of call forwarding service you want?\n");
 						printf("\n\t Press 1: If you want unconditional type \n\t Press 2: If you want for no reply service \n\t Press 3: If you want service for Busy");
@@ -94,30 +94,32 @@ int main()
 						//break;
 
 
-					/*case 2:*/
+					case 2:
 						printf("\n\tDo you want to stay active(0/1) :");
 						scanf("%d",&act);
 						if(act==0)
 						{
-							printf("Deactivation Successful");
+							printf("\n\tDeactivation Successful\n");
 							break;
 
 						}
 						else
 						{
-							printf("Active");
+							printf("\n\tActive\n");
+							break;
 
 						}
 
-					//default:
-						//printf("\n\tEnter a correct choice\n ");
+					default:
+						printf("\n\tEnter a correct choice\n ");
 						
 
-				//}
+				}
 
 
 
 			case 3:
+				printf("\n\tThankyou for visiting our Call Forwarding System Simulator\n");
 				exit(EXIT_SUCCESS);
 			default:
 				printf("\n\t Enter a correct choice among 1,2,3\n");

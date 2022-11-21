@@ -19,7 +19,6 @@ UD* signUp(UD *ud, int *_uphnno)
 		//no records
 		head = newNode;
 		ud = newNode;
-		printf("\n\tNNPD");
 	}
 	else
 	{
@@ -29,12 +28,11 @@ UD* signUp(UD *ud, int *_uphnno)
 
 		ud->next = newNode;
 		ud = ud->next;
-		printf("\n\tNoNPD");
 	}
 
 	//pd = newNode;
 
-	printf("\n\tEnter ID: ");
+	printf("\n\tEnter User Phone Number: ");
 	scanf("%d",&newNode->_uphnno);
 	printf("\n\tEnter Name: ");
 	getchar();
@@ -83,7 +81,7 @@ LD* signInDetails(LD *ld, int *_uphnno)
 
 	// printf("\n\tEnter ID: ");
 	// scanf("%d",&newNode->_id);
-	newNode->_uphnno = _uphnno;
+	newNode->_uphnno = *_uphnno;
 	printf("\n\tEnter User Name: ");
 	getchar();
 	
@@ -130,7 +128,7 @@ int writeUD(UD *ud)
 {
 	FILE *fp = NULL;
 
-	fp = fopen("UD.data","w+");
+	fp = fopen("UD.data","r+");
 	if(fp == NULL)
 	{
 		perror("\n\tfopen() ");
@@ -155,7 +153,7 @@ int writeLD(LD *ld)
 {
 	FILE *fp = NULL;
 
-	fp = fopen("LD.data","w+");
+	fp = fopen("LD.data","r+");
 	if(fp == NULL)
 	{
 		perror("\n\tfopen() ");
