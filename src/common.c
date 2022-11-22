@@ -73,7 +73,7 @@ UD* signUp(UD *ud, int *_uphnno)
 		ud = ud->next;
 <<<<<<< HEAD
 		printf("\n");
-=======
+======
 >>>>>>> 588acfd81ffe9a4f9b12e3c0a9f11d9817515d4e
 	}
 
@@ -256,11 +256,8 @@ int writeLD(LD *ld)
 
 	//fseek(fp, 0L, SEEK_END);
 	if(ld == NULL)
-<<<<<<< HEAD
 		printf("\n\t NULL Write pd");/*printing formatted output*/
-=======
 		printf("\n\t NULL Write ld");
->>>>>>> 588acfd81ffe9a4f9b12e3c0a9f11d9817515d4e
 	while(ld != NULL){
 		//printf("\n%d = %c", ld->_passwd[strlen(ld->_passwd)-1],ld->_passwd[strlen(ld->_passwd)-1]);
 		fprintf(fp,"%d, %s, %s\n",ld->_uphnno,ld->_uname,ld->_passwd);
@@ -407,7 +404,7 @@ LD* loadLD()
 	return head;
 
 }
-<<<<<<< HEAD
+
 /******************************************************************************
  * *
  * *       Function Name   : readPD
@@ -416,10 +413,10 @@ LD* loadLD()
  * *
  * *******************************************************************************/
 int readPD(UD *ud)
-=======
+
 
 int readUD(UD *ud)
->>>>>>> 588acfd81ffe9a4f9b12e3c0a9f11d9817515d4e
+
 {
 	FILE *fp = NULL;
 	char tmpBuff[256] = {'\0', };
@@ -445,7 +442,6 @@ int readUD(UD *ud)
 
 
 }
-<<<<<<< HEAD
 /******************************************************************************
  * *
  * *       Function Name   : tokenizeUD
@@ -453,7 +449,6 @@ int readUD(UD *ud)
  * *       Returns         : Success or Failure
  * *
  * *******************************************************************************/
-=======
 int readLD(LD *ld)
 {
 	FILE *fp = NULL;
@@ -480,7 +475,6 @@ int readLD(LD *ld)
 }
 
 
->>>>>>> 588acfd81ffe9a4f9b12e3c0a9f11d9817515d4e
 int tokenizeUD(UD *ud, char *tmpBuff)
 {
 	char *tokens;
