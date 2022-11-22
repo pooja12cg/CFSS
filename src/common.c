@@ -28,13 +28,10 @@
 * *******************************************************************************/
 void Welcome()
 {
-<<<<<<< HEAD
-	printf("\n\t ---------------WELCOME TO CFSS------------------\n");/*reads a single character from the standard input stream stdin*/
-=======
+	/*reads a single character from the standard input stream stdin*/
 	printf("\n\t********************************************************************************************************************\n");
 	printf("\n\t*************************************************WELCOME TO CFSS****************************************************\n");
 	printf("\n\t********************************************************************************************************************\n");
->>>>>>> 588acfd81ffe9a4f9b12e3c0a9f11d9817515d4e
 }
 
 /******************************************************************************
@@ -58,10 +55,7 @@ UD* signUp(UD *ud, int *_uphnno)
 		//no records
 		head = newNode;
 		ud = newNode;
-<<<<<<< HEAD
 		printf("\n");
-=======
->>>>>>> 588acfd81ffe9a4f9b12e3c0a9f11d9817515d4e
 	}
 	else
 	{
@@ -71,25 +65,16 @@ UD* signUp(UD *ud, int *_uphnno)
 
 		ud->next = newNode;
 		ud = ud->next;
-<<<<<<< HEAD
 		printf("\n");
-======
->>>>>>> 588acfd81ffe9a4f9b12e3c0a9f11d9817515d4e
 	}
 
 	//pd = newNode;
 
-<<<<<<< HEAD
-	printf("\n\tEnter ID: ");/*printing formatted output*/
+
+	printf("\n\tEnter User Phone Number: ");/*printing formatted output*/
 	scanf("%d",&newNode->_uphnno);/*reads input*/
 	printf("\n\tEnter Name: ");/*printing formatted output*/
 	getchar();/*reads a single character from the standard input stream stdin*/
-=======
-	printf("\n\tEnter User Phone Number: ");
-	scanf("%d",&newNode->_uphnno);
-	printf("\n\tEnter Name: ");
-	getchar();
->>>>>>> 588acfd81ffe9a4f9b12e3c0a9f11d9817515d4e
 	
 	// fgets(pd->_name, 256,stdin);
 	// removeTrailing(pd->_name);
@@ -103,7 +88,7 @@ UD* signUp(UD *ud, int *_uphnno)
 	return head;
 }
 
-<<<<<<< HEAD
+
 /******************************************************************************
  * *
  * *       Function Name   : signInDetails
@@ -111,11 +96,8 @@ UD* signUp(UD *ud, int *_uphnno)
  * *       Returns         : Success or Failure
  * *
  * *******************************************************************************/
-LD* signInDetails(LD *ld, int *_uphnno)
-=======
 
 LD* signInDetails(LD *ld, int _uphnno)
->>>>>>> 588acfd81ffe9a4f9b12e3c0a9f11d9817515d4e
 {
 	LD *newNode =NULL;
 	LD *head = NULL;
@@ -169,17 +151,11 @@ LD* signInDetails(LD *ld, int _uphnno)
 void dispUD(UD *ud)
 {
 	while(ud != NULL){
-<<<<<<< HEAD
-		printf("\n\tID: ");/*printing formatted output*/
+
+		printf("\n\tPhone Number: ");/*printing formatted output*/
 		printf("%d",ud->_uphnno);/*display formatted output*/
 		printf("\tName: ");/*printing formatted output*/
 		printf("%s",ud->_uname);/*display formatted output*/
-=======
-		printf("\n\tPhone Number: ");
-		printf("%d",ud->_uphnno);
-		printf("\tName: ");
-		printf("%s",ud->_uname);
->>>>>>> 588acfd81ffe9a4f9b12e3c0a9f11d9817515d4e
 		//printf("\tGender (M/F/O): ");
 		//printf("%c",pd->_gender);
 		ud = ud->next;
@@ -257,7 +233,6 @@ int writeLD(LD *ld)
 	//fseek(fp, 0L, SEEK_END);
 	if(ld == NULL)
 		printf("\n\t NULL Write pd");/*printing formatted output*/
-		printf("\n\t NULL Write ld");
 	while(ld != NULL){
 		//printf("\n%d = %c", ld->_passwd[strlen(ld->_passwd)-1],ld->_passwd[strlen(ld->_passwd)-1]);
 		fprintf(fp,"%d, %s, %s\n",ld->_uphnno,ld->_uname,ld->_passwd);
@@ -412,8 +387,6 @@ LD* loadLD()
  * *       Returns         : Success or Failure
  * *
  * *******************************************************************************/
-int readPD(UD *ud)
-
 
 int readUD(UD *ud)
 
