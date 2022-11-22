@@ -39,7 +39,7 @@ int main()
 		system("clear");
 		Welcome();/*function calling*/
 		printf("\n\tMAIN MENU***********\n");/*printing formatted output*/
-		char Main_menu[]="\n\tChoose you option\n\n\t 1.New User Registration\n\t 2.Login\n\t 3.Display\n\t 4.Admin Login \n\t 5.Exit \n\t Choice:";
+		char Main_menu[]="\n\tChoose you option\n\n\t 1.New User Registration\n\t 2.Login\n\t 3.Display\n\t n\t 5.Exit \n\t Choice:";
 		printf("%s", Main_menu);/*displaying formatted output*/
 		scanf("%d",&ch);/*reads input*/
 		//ch = dispMainMenu();
@@ -80,36 +80,56 @@ int main()
 				printf("%s", Sub_menu);/*printing formatted output*/
 				scanf("%d",&opt);/*reads input*/
 				//opt = dispSubMenu();
+				int flag =0;
 				switch(opt)
 				{
 					case 1:
 						printf("\n\t Call forwarding services are available");/*printing formatted output*/
-						printf("\n\t Which type of call forwarding service you want?\n");/*printing formatted output*/
-						printf("\n\t Press 1: If you want unconditional type \n\t Press 2: If you want for no reply service \n\t Press 3: If you want service for Busy");/*printing formatted output*/
-						printf("\n\tEnter your choice:");/*printing formatted output*/
-						scanf("%d",&opt);/*reads input*/
-						switch(opt)
-						{		
-							case 1:
-								printf("\n\tUnconditional Call Forwarding \n ");/*printing formatted output*/
-								break;
-							case 2:
-								printf("\n\tCall is forwaded as No Reply\n ");/*printing formatted output*/
-								break;
-							case 3:
-								printf("\n\tCall is forwaded as Busy\n ");/*printing formatted output*/
-								break;
-							default:
-								printf("\n\tEnter a correct choice\n ");/*printing formatted output*/
+						printf("\n\t Do you want to activate call forwarding service(0/1) :");
+						scanf("%d",&flag);
+						if(flag==0)
+						{
+							printf("\n\nUser is not Active");
+							break;
+						}
+						else
+						{
+							if(flag==1)
+							{
+								printf("\n\t Which type of call forwarding service you want?\n");/*printing formatted output*/
+								printf("\n\t Press 1: If you want unconditional type \n\t"); 
+								printf("\n\t Press 2: If you want for no reply service \n\t");
+								printf("\n\t Press 3: If you want service for Busy");/*printing formatted output*/
+								printf("\n\tEnter your choice:");/*printing formatted output*/
+								scanf("%d",&opt);/*reads input*/
+								switch(opt)
+								{
+									case 1:
+										printf("\n\tUnconditional Call Forwarding \n ");/*printing formatted output*/
+										break;
+									case 2:
+										printf("\n\tCall is forwaded as No Reply\n ");/*printing formatted output*/
+										break;
+									case 3:
+										printf("\n\tCall is forwaded as Busy\n ");/*printing formatted output*/
+										break;
+									default:
+										printf("\n\tEnter a correct choice\n ");/*printing formatted output*/
+								}
+							}
+							else
+							{
+								printf("\n\tPlease enter a valid input ");
+							}
 						}
 
 						//break;
 
 
 					case 2:
-						printf("\n\tDo you want to stay active(0/1) :");/*printing formatted output*/
-						scanf("%d",&act);/*read input*/
-						if(act==0)/*condition checks if the user is inactive*/
+						//printf("\n\tDo you want to stay active(0/1) :");/*printing formatted output*/
+						//scanf("%d",&act);/*read input*/
+						if(flag==1)/*condition checks if the user is inactive*/
 						{
 							printf("\n\tDeactivation Successful\n");/*printing formatted output*/
 							break;
@@ -117,7 +137,7 @@ int main()
 						}
 						else/*condition checks if the user is active*/
 						{
-							printf("\n\tActive\n");/*printing formatted output*/
+							printf("\n\tActivate call forwarding first\n");/*printing formatted output*/
 							break;
 
 						}

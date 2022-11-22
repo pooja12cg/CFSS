@@ -209,6 +209,7 @@ int writeUD(UD *ud)
 	}
 
 	fclose(fp);
+	return -1;
 
 	
 }
@@ -240,6 +241,7 @@ int writeLD(LD *ld)
 	}
 
 	fclose(fp);
+	return -1;
 
 	
 }
@@ -412,6 +414,7 @@ int readUD(UD *ud)
 	}
 
 	fclose(fp);
+	return -1;
 
 
 }
@@ -445,10 +448,11 @@ int readLD(LD *ld)
 	}
 
 	fclose(fp);
+	return -1;
 }
 
 
-int tokenizeUD(UD *ud, char *tmpBuff)
+void tokenizeUD(UD *ud, char *tmpBuff)
 {
 	char *tokens;
 	/*int i;
@@ -476,7 +480,7 @@ int tokenizeUD(UD *ud, char *tmpBuff)
  * *       Returns         : Success or Failure
  * *
  * *******************************************************************************/
-int tokenizeLD(LD *ld, char *tmpBuff)
+void tokenizeLD(LD *ld, char *tmpBuff)
 {
 	char *tokens;
 	/*int i, count;
