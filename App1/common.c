@@ -297,6 +297,117 @@ LD* loadLD()
 
 }
 
+CFSS* loadCFSS()
+{
+	FILE *fp = NULL;
+	CFSS *newNode = NULL;
+	CFSS *head = NULL;
+	CFSS *cfss; 
+	int _fSize = 0;
+	char tmpBuff[256] = {'\0', };
+	
+	fp = fopen("CFSS.dat","r");
+	if(fp == NULL)
+	{
+		perror("\n\tfopen() ");
+		return NULL;
+	}
+
+	fseek(fp, 0L, SEEK_SET);
+	fseek(fp, 0L, SEEK_END);
+	_fSize = ftell(fp);
+	// printf("\n\tFile Size: %d\n",_fSize);
+
+	if(_fSize == 0) /* No records */
+	{
+		head = NULL;
+	}
+	else
+	{
+		fseek(fp, 0L, SEEK_SET);
+		memset(tmpBuff,'\0', 256);
+		// head = newNode;
+		while(fgets(tmpBuff, 256, fp)){
+			
+			if(head == NULL) /* first record */
+			{
+				newNode = (CFSS *)malloc(sizeof(CFSS));
+				newNode->next = NULL;
+				head = newNode;
+				cfss = newNode;
+				tokenizeCFSS(newNode, tmpBuff);
+						
+			}
+			else /* rest of the records */
+			{
+				newNode = (CFSS *)malloc(sizeof(CFSS));
+				newNode->next = NULL;
+				cfss->next = newNode;
+				tokenizeCFSS(newNode, tmpBuff);
+				cfss = cfss->next;	
+			}
+			
+
+		}
+
+	}
+
+	fclose(fp);
+	// printf("\n\tHead : %u\nlast node: %u\n", head, pd);
+	return head;
+
+}
+
+int writeCFSS(CFSS *cfs)
+{
+	FILE *fp = NULL;
+
+	fp = fopen("CFSS.dat","w+");
+	if(fp == NULL)
+	{
+		perror("\n\tfopen() ");
+		return -1;
+	}
+
+	//fseek(fp, 0L, SEEK_END);
+	if(cfs == NULL)
+		printf("\n\t NULL Write CFSS");
+	while(cfs != NULL){
+		//printf("\n%d = %c", ld->_passwd[strlen(ld->_passwd)-1],ld->_passwd[strlen(ld->_passwd)-1]);
+		fprintf(fp,"%d, %d, %d, %d, %s\n",cfs->_id,cfs->regFlag,cfs->cfsNumber,cfs->cfsActive,cfs->status);
+		cfs = cfs->next;
+	}
+
+	fclose(fp);
+
+	
+}
+int readCFSS(CFSS *cfs)
+{
+	FILE *fp = NULL;
+	char tmpBuff[256] = {'\0', };
+	CFSS tmpcfs;
+
+	fp = fopen("CFSS.dat","r");
+	if(fp == NULL)
+	{
+		perror("\n\tfopen() ");
+		return -1;
+	}
+
+	fseek(fp, 0L, SEEK_SET);
+	memset(tmpBuff,'\0', 256);
+	while(fgets(tmpBuff, 256, fp)){
+	
+		// printf("\n\tRead Buff: %s", tmpBuff);
+		tokenizeCFSS(&tmpcfs, tmpBuff);
+		memset(tmpBuff,'\0', 256);
+	}
+
+	fclose(fp);
+
+
+}
 int readPD(PD *pd)
 {
 	FILE *fp = NULL;
@@ -324,6 +435,24 @@ int readPD(PD *pd)
 
 }
 
+int tokenizeCFSS(CFSS *cfs, char *tmpBuff)
+{
+	char *tokens;
+	int i, count;
+	char *tmpBuff1;
+
+	tokens = strtok(tmpBuff, ",");
+	cfs->_id = atoi(tokens);
+
+	tokens = strtok(NULL, ",");
+	removeLeading(tokens,cfs->status);
+	
+	/*tokens = strtok(NULL, ",");
+	removeLeading(tokens,tokens);
+	removeTrailing(tokens);
+	cfs->_gender = tokens[0];*/
+
+}
 int tokenizePD(PD *pd, char *tmpBuff)
 {
 	char *tokens;

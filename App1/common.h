@@ -25,26 +25,33 @@ typedef struct loginDetails
 	char _passwd[30];
 	struct loginDetails *next;
 }LD;
-typedef struct cfss
+typedef struct callForwarding
 {
 	int _id;
 	int regFlag;
 	int cfsNumber;
 	int cfsActive;
 	char status[20];
-	struct cfss *next;
+	struct callForwarding *next;
 }CFSS;
 
 
 PD *loadPD();
 LD *loadLD();
+CFSS *loadCFFS();
 PD* signUp(PD *, int*);
 LD* signInDetails(LD *, int);
+
 int signIn(LD *);
 int readPD(PD *);
 int writePD(PD *);
 int readLD(LD *);
 int writeLD(LD *);
+int readCFSS(CFSS *);
+int writeCFSS(CFSS *);
+
+void cfsActivation(CFSS *);
+void cfsDeactivation(CFSS *);
 
 void dispPD(PD *);
 void dispLD(LD *);

@@ -7,6 +7,8 @@ int main()
 	PD *headpd = NULL;
 	LD *ld = NULL;
 	LD *headld = NULL;
+	CFSS *cfss = NULL;
+	CFSS *headcfss= NULL;
 
 	int login=0;
 	int user=0;
@@ -24,6 +26,8 @@ int main()
 		printf("\n\tNULLPD\n");
 	}*/
 	pd = headpd;
+	headcfss = loadCFSS(cfss);
+	cfss = headcfss;
 	
 	headld = loadLD(ld);
 	/*if(headld == NULL)
@@ -98,7 +102,8 @@ int main()
 								{
 									case 1 :
 										printf("\n\tCALL FORWARDING ACTIVATION PAGE");
-										printf("\n\tDo you want to activate Call Forwarding services(0/1) : ");
+										cfsActivation(headcfss);
+										/*printf("\n\tDo you want to activate Call Forwarding services(0/1) : ");
 										scanf("%d",&act);
 										if(act)
 										{
@@ -135,10 +140,11 @@ int main()
 											printf("\n\tCall forwarding has not been activated");
 											break;
 										}
-										break;
+										break;*/
 
 									case 2 :
-										printf("\n\t3.Return to deactive menu");
+										//printf("\n\t3.Return to deactive menu");
+										cfsDeactivation(headcfss);
 										break;
 									case 3 :
 										printf("\n\tReturning to previous menu");
