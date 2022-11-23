@@ -28,7 +28,11 @@
 * *******************************************************************************/
 void Welcome()
 {
+<<<<<<< HEAD
 	printf("\n\t ---------------WELCOME TO CFSS------------------\n");/*reads a single character from the standard input stream stdin*/
+=======
+	/*reads a single character from the standard input stream stdin*/
+>>>>>>> a50403cb6d2dff1562fcc10cd47ceaa128742f5d
 	printf("\n\t********************************************************************************************************************\n");
 	printf("\n\t*************************************************WELCOME TO CFSS****************************************************\n");
 	printf("\n\t********************************************************************************************************************\n");
@@ -70,6 +74,7 @@ UD* signUp(UD *ud, int *_uphnno)
 
 	//pd = newNode;
 
+<<<<<<< HEAD
 	printf("\n\tEnter ID: ");/*printing formatted output*/
 	scanf("%d",&newNode->_uphnno);/*reads input*/
 	printf("\n\tEnter Name: ");/*printing formatted output*/
@@ -78,6 +83,13 @@ UD* signUp(UD *ud, int *_uphnno)
 	scanf("%d",&newNode->_uphnno);
 	printf("\n\tEnter Name: ");
 	getchar();
+=======
+
+	printf("\n\tEnter User Phone Number: ");/*printing formatted output*/
+	scanf("%d",&newNode->_uphnno);/*reads input*/
+	printf("\n\tEnter Name: ");/*printing formatted output*/
+	getchar();/*reads a single character from the standard input stream stdin*/
+>>>>>>> a50403cb6d2dff1562fcc10cd47ceaa128742f5d
 	
 	// fgets(pd->_name, 256,stdin);
 	// removeTrailing(pd->_name);
@@ -91,6 +103,10 @@ UD* signUp(UD *ud, int *_uphnno)
 	return head;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a50403cb6d2dff1562fcc10cd47ceaa128742f5d
 /******************************************************************************
  * *
  * *       Function Name   : signInDetails
@@ -98,7 +114,10 @@ UD* signUp(UD *ud, int *_uphnno)
  * *       Returns         : Success or Failure
  * *
  * *******************************************************************************/
+<<<<<<< HEAD
 LD* signInDetails(LD *ld, int *_uphnno)
+=======
+>>>>>>> a50403cb6d2dff1562fcc10cd47ceaa128742f5d
 
 LD* signInDetails(LD *ld, int _uphnno)
 {
@@ -154,6 +173,7 @@ LD* signInDetails(LD *ld, int _uphnno)
 void dispUD(UD *ud)
 {
 	while(ud != NULL){
+<<<<<<< HEAD
 		printf("\n\tID: ");/*printing formatted output*/
 		printf("%d",ud->_uphnno);/*display formatted output*/
 		printf("\tName: ");/*printing formatted output*/
@@ -162,6 +182,13 @@ void dispUD(UD *ud)
 		printf("%d",ud->_uphnno);
 		printf("\tName: ");
 		printf("%s",ud->_uname);
+=======
+
+		printf("\n\tPhone Number: ");/*printing formatted output*/
+		printf("%d",ud->_uphnno);/*display formatted output*/
+		printf("\tName: ");/*printing formatted output*/
+		printf("%s",ud->_uname);/*display formatted output*/
+>>>>>>> a50403cb6d2dff1562fcc10cd47ceaa128742f5d
 		//printf("\tGender (M/F/O): ");
 		//printf("%c",pd->_gender);
 		ud = ud->next;
@@ -215,6 +242,7 @@ int writeUD(UD *ud)
 	}
 
 	fclose(fp);
+	return -1;
 
 	
 }
@@ -239,7 +267,6 @@ int writeLD(LD *ld)
 	//fseek(fp, 0L, SEEK_END);
 	if(ld == NULL)
 		printf("\n\t NULL Write pd");/*printing formatted output*/
-		printf("\n\t NULL Write ld");
 	while(ld != NULL){
 		//printf("\n%d = %c", ld->_passwd[strlen(ld->_passwd)-1],ld->_passwd[strlen(ld->_passwd)-1]);
 		fprintf(fp,"%d, %s, %s\n",ld->_uphnno,ld->_uname,ld->_passwd);
@@ -247,6 +274,7 @@ int writeLD(LD *ld)
 	}
 
 	fclose(fp);
+	return -1;
 
 	
 }
@@ -394,8 +422,6 @@ LD* loadLD()
  * *       Returns         : Success or Failure
  * *
  * *******************************************************************************/
-int readPD(UD *ud)
-
 
 int readUD(UD *ud)
 
@@ -421,6 +447,7 @@ int readUD(UD *ud)
 	}
 
 	fclose(fp);
+	return -1;
 
 
 }
@@ -454,10 +481,11 @@ int readLD(LD *ld)
 	}
 
 	fclose(fp);
+	return -1;
 }
 
 
-int tokenizeUD(UD *ud, char *tmpBuff)
+void tokenizeUD(UD *ud, char *tmpBuff)
 {
 	char *tokens;
 	/*int i;
@@ -485,7 +513,7 @@ int tokenizeUD(UD *ud, char *tmpBuff)
  * *       Returns         : Success or Failure
  * *
  * *******************************************************************************/
-int tokenizeLD(LD *ld, char *tmpBuff)
+void tokenizeLD(LD *ld, char *tmpBuff)
 {
 	char *tokens;
 	/*int i, count;
