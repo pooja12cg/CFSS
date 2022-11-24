@@ -1,15 +1,36 @@
 #include <common.h>
 
-UPD* signUp(UPD *upd, int *_id)
+UPD* signUp(UPD *upd,CFSS *hcfss, int *_id)
 {
 	UPD *newNode =NULL;
 	UPD *head = NULL;
-	head = upd;
+	CFSS *newcfss=NULL;
+	CFSS *hCFSS=hcfss;
 
 	int i;
 	int flagvalidate;
 	int phnvalidate;
 
+	head = upd;
+	
+	newcfss=(CFSS *)malloc(sizeof(CFSS));
+	newcfss->next = NULL;
+
+	if(hcfss == NULL)
+	{
+		//no records
+		hcfss = newcfss;
+		hCFSS = newcfss;
+	}
+	else
+	{
+		//records are present
+		while(hCFSS->next != NULL)
+			hCFSS = hCFSS->next;
+
+		hCFSS->next = newcfss;
+		hCFSS = hCFSS->next;
+	}
 
 	newNode = (UPD *)malloc(sizeof(UPD));
 	newNode->next = NULL;
@@ -39,7 +60,7 @@ UPD* signUp(UPD *upd, int *_id)
 	getchar();
 	scanf("%[^\n]s",newNode->_uName);
 	i = 0;
-	while(newNode->_uName[i]!='\0')
+	/*while(newNode->_uName[i]!='\0')
 	{
 		if(isalpha(newNode->_uName[i])==0)
 		{
@@ -50,23 +71,27 @@ UPD* signUp(UPD *upd, int *_id)
 			continue;
 		flagvalidate=2;
 		i++;
-	} 
+	} */
 	printf("\n\tEnter Phone Number: ");
 	scanf("%d",&newNode->_phNo);
-	if(isdigit(newNode->_phNo)==0)
+/*	if(isdigit(newNode->_phNo)==0)
 	{
 		phnvalidate=1;
-	}
+	}*/
 	printf("\n\tEnter Gender (M/F/O): ");
 	getchar();
 	scanf("%c",&newNode->_gender);
-	if((phnvalidate==1)&&(flagvalidate==1))
+	/*if((phnvalidate==1)&&(flagvalidate==1))
 		printf("\n\tSuccessfully Registered");
 	else
 		printf("\n\tInvalid Phone Number/Name "); 
-
+*/
 	*_id = newNode->_id;
-	
+	newcfss->cfsNumber=-1; 
+	newcfss->cfsActive=0;
+	strcpy(newcfss->status,"a");
+	newcfss->regFlag=0;
+        newcfss->_id=newNode->_id;
 	return head;
 }
 
@@ -207,7 +232,7 @@ int writeCFSS(CFSS *cfss)
 	if(cfss == NULL)
 		printf("\n\t NULL Write CFSS");
 	while(cfss != NULL){
-		//printf("\n%d = %c", ld->_passwd[strlen(ld->_passwd)-1],ld->_passwd[strlen(ld->_passwd)-1]);
+		printf("\n%d = cfss->_id",cfss->_id);
 		fprintf(fp,"%d, %d, %d, %d, %s\n",cfss->_id,cfss->regFlag,cfss->cfsNumber,cfss->cfsActive,cfss->status);
 		cfss = cfss->next;
 	}

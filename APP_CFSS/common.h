@@ -34,7 +34,7 @@ typedef struct callForwarding
 	char status[20];
 	struct callForwarding *next;
 }CFSS;
-UPD *signUp(UPD *, int*);
+UPD *signUp(UPD *,CFSS *, int*);
 LD *signInDetails(LD*, int);
 int  signInUser(LD *);
 

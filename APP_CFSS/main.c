@@ -2,7 +2,7 @@
 #include <configMenu.h>
 
 int main()
-{
+{	
 	UPD *upd = NULL;
 	UPD *headupd = NULL;
 	LD *ld = NULL;
@@ -40,7 +40,7 @@ int main()
 		switch(ch)
 		{
 			case 1:
-				headupd = signUp(headupd,&_id);
+				headupd = signUp(headupd,headcfss,&_id);
 				headld = signInDetails(headld, _id);
 				//dispPD(headpd);
 				//dispLD(headld);
@@ -48,6 +48,7 @@ int main()
 				// writeLD(headld);
 				//headpd = pd;
 				//headld = ld;
+				writeCFSS(headcfss);
 				printf("\n\tSuccessfully Registered\n");
 				sleep(2);
 				break;
@@ -220,6 +221,7 @@ int main()
 			case 3:
 				writeUPD(headupd);
 				writeLD(headld);
+				writeCFSS(headcfss);
 				printf("\n\tThankyou for using CFSS");
 				exit(EXIT_SUCCESS);
 			default:
