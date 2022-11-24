@@ -1,5 +1,6 @@
 #include<common.h>
 
+
 void AdminLogin()
 {
 	char aName[20];
