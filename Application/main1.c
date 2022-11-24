@@ -23,7 +23,8 @@ int main()
 	LD *ld=NULL;/*pointer ld pointing to structure loginDetails initialized to NULL value*/
 	LD *headld = NULL;/*pointer headld pointing to structure loginDetails initialized to NULL value*/
 
-	int _uphnno =0;/*holds phone number */
+	int id = 0;
+	int uphnno =0;/*holds phone number */
 	int act =0;/*active=1 when user is active ,active=0 when user is inactive */
 
 	int ch =0;/*holds the choice to choose*/
@@ -39,7 +40,7 @@ int main()
 		system("clear");
 		Welcome();/*function calling*/
 		printf("\n\tMAIN MENU***********\n");/*printing formatted output*/
-		char Main_menu[]="\n\tChoose you option\n\n\t 1.New User Registration\n\t 2.Login\n\t 3.Exit \n\t Choice:";
+		char Main_menu[]="\n\tChoose you option\n\n\t 1.SignUp\n\t 2.SignIn\n\t 3.Exit \n\t Choice:";
 		printf("%s", Main_menu);/*displaying formatted output*/
 		scanf("%d",&ch);/*reads input*/
 		//ch = dispMainMenu();
@@ -47,8 +48,8 @@ int main()
 		switch(ch)
 		{
 			case 1:
-				headud = signUp(headud, &_uphnno);/*pointer headud heading towards signUp function*/
-				headld = signInDetails(headld, _uphnno);/*pointer headud heading towards signInDetails function*/
+				headud = signUp(headud, &id);/*pointer headud heading towards signUp function*/
+				headld = signInDetails(headld, id);/*pointer headud heading towards signInDetails function*/
 				printf("\n\t SUCCESSFULLY REGISTERED\n");/*printing formatted output*/
 				dispUD(headud);/*function calling*/
 				sleep(2);/*sleep is implemented to display after 2 seconds*/
@@ -151,11 +152,11 @@ int main()
 				sleep(2);
 
 				break;
-			case 3:
-				dispUD(headud);/*function calling*/
-				dispLD(headld);/*function calling*/
+			/*case 3:
+				dispUD(headud);/*function calling
+				dispLD(headld);/*function calling
 				sleep(2);
-				break;
+				break;*/
 			/*case 4:
 				if(Login(headld) == 0)
 				{
@@ -186,7 +187,7 @@ int main()
 
 
 
-			case 4:
+			case 3:
 				//write(headud);
 				//write(headld);
 				printf("\n\tThankyou for visiting our Call Forwarding System Simulator\n");/*printing formatted output*/

@@ -23,19 +23,32 @@
 
 typedef struct userDetails
 {
-	int _uphnno;
-	char _uname[30];
+	int id;
+	int uphnno;
+	char uname[30];
+	int regFlag;
 	struct userDetails *next;
 }UD;
 
 
 typedef struct  loginDetails
 {
-	int _uphnno;
-	char _uname[30];
-	char _passwd[30];
+	int id;
+	char uname[30];
+	char passwd[30];
 	struct loginDetails *next;
 }LD;
+
+typedef struct Cfss
+{
+	int id;
+	int regFlag;
+	int cfs_num;
+	int cfs_active;
+	char status[20];
+	struct Cfss *next;
+
+}CFSS;
 
 void Welcome();
 //int dispMainMenu();

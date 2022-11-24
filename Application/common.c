@@ -41,7 +41,7 @@ void Welcome()
 * *       Returns         : Success or Failure
 * *
 * *******************************************************************************/
-UD* signUp(UD *ud, int *_uphnno)
+UD* signUp(UD *ud, int *id)
 {
 	UD *newNode =NULL;
 	UD *head = NULL;
@@ -71,19 +71,22 @@ UD* signUp(UD *ud, int *_uphnno)
 	//pd = newNode;
 
 
+	
+	printf("\n\tEnter User Id: ");/*printing formatted output*/
+	scanf("%d",&newNode->id);/*reads input*/
 	printf("\n\tEnter User Phone Number: ");/*printing formatted output*/
-	scanf("%d",&newNode->_uphnno);/*reads input*/
+	scanf("%d",&newNode->uphnno);/*reads input*/
 	printf("\n\tEnter Name: ");/*printing formatted output*/
 	getchar();/*reads a single character from the standard input stream stdin*/
 	
 	// fgets(pd->_name, 256,stdin);
 	// removeTrailing(pd->_name);
 	
-	scanf("%[^\n]s",newNode->_uname);/*reads input*/
+	scanf("%[^\n]s",newNode->uname);/*reads input*/
 	/*printf("\n\tEnter Gender (M/F/O): ");
 	getchar();
 	scanf("%c",&newNode->_gender);*/
-	*_uphnno = newNode->_uphnno;
+	*id = newNode->id;
 	
 	return head;
 }
@@ -97,7 +100,7 @@ UD* signUp(UD *ud, int *_uphnno)
  * *
  * *******************************************************************************/
 
-LD* signInDetails(LD *ld, int _uphnno)
+LD* signInDetails(LD *ld, int id)
 {
 	LD *newNode =NULL;
 	LD *head = NULL;
@@ -124,20 +127,20 @@ LD* signInDetails(LD *ld, int _uphnno)
 
 	
 
-	/* printf("\n\tEnter ID: ");*/
-	/* scanf("%d",&newNode->_id);*/
-	newNode->_uphnno = _uphnno;
+	printf("\n\tEnter ID: ");
+	scanf("%d",&newNode->id);
+	//newNode->id = id;
 	printf("\n\tEnter User Name: ");/*printing formatted output*/
 	getchar();/*reads a single character from the standard input stream stdin*/
 	
 	/* fgets(pd->_name, 256,stdin);*/
 	/* removeTrailing(pd->_name);*/
 	
-	scanf("%s",newNode->_uname);/*reads input*/
+	scanf("%[^\n]s",newNode->uname);/*reads input*/
 	printf("\n\tEnter Password: ");/*printing formatted output*/
 	getchar();/*reads a single character from the standard input stream stdin*/
-	scanf("%s",newNode->_passwd);/*reads input*/
-	
+	scanf("%s",newNode->passwd);/*reads input*/
+	id = newNode->id;
 	
 	return head;
 }
@@ -152,10 +155,13 @@ void dispUD(UD *ud)
 {
 	while(ud != NULL){
 
+		
+		printf("\n\tID: ");/*printing formatted output*/
+		printf("%d",ud->id);/*display formatted output*/
 		printf("\n\tPhone Number: ");/*printing formatted output*/
-		printf("%d",ud->_uphnno);/*display formatted output*/
+		printf("%d",ud->uphnno);/*display formatted output*/
 		printf("\tName: ");/*printing formatted output*/
-		printf("%s",ud->_uname);/*display formatted output*/
+		printf("%s",ud->uname);/*display formatted output*/
 		//printf("\tGender (M/F/O): ");
 		//printf("%c",pd->_gender);
 		ud = ud->next;
@@ -172,12 +178,12 @@ void dispUD(UD *ud)
 void dispLD(LD *ld)
 {
 	while(ld != NULL){
-		printf("\n\tPhone Number: ");
-		printf("%d",ld->_uphnno);
+		printf("\n\tID: ");
+		printf("%d",ld->id);
 		printf("\tUser Name: ");
-		printf("%s",ld->_uname);
+		printf("%s",ld->uname);
 		printf("\tPassword: ");
-		printf("%s",ld->_passwd);
+		printf("%s",ld->passwd);
 		ld = ld->next;
 	}
 }
@@ -192,24 +198,23 @@ int writeUD(UD *ud)
 {
 	FILE *fp = NULL;
 
-	fp = fopen("./data/UD.data","w+");
+	fp = fopen("UD.data","w+");
 	if(fp == NULL)
 	{
 		perror("\n\tfopen() ");
 		return -1;
 	}
+	fseek(fp, 0L, SEEK_END);
 
-	//fseek(fp, 0L, SEEK_END);
 	if(ud == NULL)
 		printf("\n\t NULL Write ud");/*printing formatted output*/
 	while(ud != NULL){
-		fprintf(fp,"%d, %s\n",ud->_uphnno,ud->_uname);
-		//fprintf(stdout,"%d, %s, %c\n",pd->_id,pd->_name,pd->_gender);
+		fprintf(fp,"%d, %d, %s\n",ud->id,ud->uphnno,ud->uname);
 		ud = ud->next;
 	}
 
 	fclose(fp);
-	return -1;
+	return 0;
 
 	
 }
@@ -224,24 +229,24 @@ int writeLD(LD *ld)
 {
 	FILE *fp = NULL;
 
-	fp = fopen("./data/LD.data","w+");
+	fp = fopen("LD.data","w+");
 	if(fp == NULL)
 	{
 		perror("\n\tfopen() ");
 		return -1;
 	}
 
-	//fseek(fp, 0L, SEEK_END);
+	fseek(fp, 0L, SEEK_END);
 	if(ld == NULL)
 		printf("\n\t NULL Write pd");/*printing formatted output*/
 	while(ld != NULL){
 		//printf("\n%d = %c", ld->_passwd[strlen(ld->_passwd)-1],ld->_passwd[strlen(ld->_passwd)-1]);
-		fprintf(fp,"%d, %s, %s\n",ld->_uphnno,ld->_uname,ld->_passwd);
+		fprintf(fp,"%d, %s, %s\n",ld->id,ld->uname,ld->passwd);
 		ld = ld->next;
 	}
 
 	fclose(fp);
-	return -1;
+	return 0;
 
 	
 }
@@ -260,9 +265,9 @@ UD* loadUD()
 	UD *head = NULL;
 	UD *ud; 
 	int _fSize = 0;
-	char tmpBuff[256] = {'\0', };
+	char tmpBuff[1024] = {'\0', };
 	
-	fp = fopen("./data/UD.data","r");
+	fp = fopen("UD.data","r");
 	if(fp == NULL)
 	{
 		perror("\n\tfopen() ");
@@ -328,9 +333,9 @@ LD* loadLD()
 	LD *head = NULL;
 	LD *ld; 
 	int _fSize = 0;
-	char tmpBuff[256] = {'\0', };
+	char tmpBuff[1024] = {'\0', };
 	
-	fp = fopen("./data/LD.data","r");
+	fp = fopen("LD.data","r");
 	if(fp == NULL)
 	{
 		perror("\n\tfopen() ");
@@ -349,9 +354,9 @@ LD* loadLD()
 	else
 	{
 		fseek(fp, 0L, SEEK_SET);
-		memset(tmpBuff,'\0', 256);
+		memset(tmpBuff,'\0', 1024);
 		// head = newNode;
-		while(fgets(tmpBuff, 256, fp)){
+		while(fgets(tmpBuff, 1024, fp)){
 			
 			if(head == NULL) /* first record */
 			{
@@ -397,7 +402,7 @@ int readUD(UD *ud)
 	char tmpBuff[256] = {'\0', };
 	UD tmpud;
 
-	fp = fopen("./data/UD.data","r");
+	fp = fopen("UD.data","r");
 	if(fp == NULL)
 	{
 		perror("\n\tfopen() ");
@@ -431,7 +436,7 @@ int readLD(LD *ld)
 	char tmpBuff[256] = {'\0', };
 	LD tmpld;
 
-	fp = fopen("./data/LD.data","r");
+	fp = fopen("LD.data","r");
 	if(fp == NULL)
 	{
 		perror("\n\tfopen() ");
@@ -460,10 +465,10 @@ void tokenizeUD(UD *ud, char *tmpBuff)
 	char *tmpBuff1;*/
 
 	tokens = strtok(tmpBuff, ",");
-	ud->_uphnno = atoi(tokens);
+	ud->id = atoi(tokens);
 
 	tokens = strtok(NULL, ",");
-	removeLeading(tokens,ud->_uname);
+	removeLeading(tokens,ud->uname);
 	
 	tokens = strtok(NULL, ",");
 	removeLeading(tokens,tokens);
@@ -487,14 +492,14 @@ void tokenizeLD(LD *ld, char *tmpBuff)
 	char *tmpBuff1;*/
 
 	tokens = strtok(tmpBuff, ",");
-	ld->_uphnno = atoi(tokens);
+	ld->id = atoi(tokens);
 
 	tokens = strtok(NULL, ",");
-	removeLeading(tokens,ld->_uname);
+	removeLeading(tokens,ld->uname);
 	
 	tokens = strtok(NULL, ",");
-	removeLeading(tokens,ld->_passwd);
-	removeTrailing(ld->_passwd);
+	removeLeading(tokens,ld->passwd);
+	removeTrailing(ld->passwd);
 	//dispPD(pd);
 }
 /******************************************************************************
@@ -556,22 +561,55 @@ int Login(LD *head)
 {
 	LD _ld;/*variable declared for the loginDetails structure*/
 	int flag = 0;/*initially flag is low*/
+	//char adName="Admin";
+	//char adPasswd="Admin123";
 	
 	printf("\n\tEnter User Name: ");/*printing formatted output*/
-	scanf("%s", _ld._uname);
+	getchar();
+	scanf("%[^\n]",_ld.uname);
+
+	//scanf("%s", _ld.uname);
 	printf("\n\tEnter Password: ");/*printing formatted output*/
-	scanf("%s",_ld._passwd);
+	scanf("%s",_ld.passwd);
+	/*if((strcmp(head->uname,adName)==0)&&(strcmp(head->passwd,adPasswd)==0))
+	{
+		Admin_Login();
+
+	}
+	else
+	{*/
 	while(head != NULL)
 	{
-		if((strcmp(head->_uname, _ld._uname)==0)&&(strcmp(head->_passwd, _ld._passwd)==0))
+		if((strcmp(head->uname, _ld.uname)==0)&&(strcmp(head->passwd, _ld.passwd)==0))
 		{
 			flag = 1;
 			break;
 		}
 		head = head->next;
 	}
-
 	if(flag == 1)
 		return 1;
 	return 0;
 }
+int Admin_Login()
+{
+	int ch=0;
+	printf("\n\tPress \n\t1. Add User by Id \n\t2. Update user by Id \n\t3. Delete User by Id \n\t4. Exit \n\tChoice : ");
+	scanf("%d",&ch);
+	switch(ch)
+	{
+		case 1:
+			printf("\n\tAdded User");
+		case 2:
+			printf("\n\tUpdated User");
+		case 3:
+			printf("\n\tDeleted User");
+		case 4:
+			exit(EXIT_SUCCESS);
+		default:
+			printf("\n\tEnter the Correct Choice");
+	}
+	
+}
+
+
