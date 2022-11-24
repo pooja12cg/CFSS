@@ -19,9 +19,9 @@ int main()
 	int regFlag=0;
 	int cfsNumber=0;
 
-	headupd = loadUPD(upd);
+	headupd = loadUPD();
 	upd = headupd;
-	headcfss = loadCFSS(cfss);
+	headcfss = loadCFSS();
 	cfss = headcfss;
 	
 	headld = loadLD(ld);

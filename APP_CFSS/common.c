@@ -38,6 +38,7 @@ UPD* signUp(UPD *upd, int *_id)
 	printf("\n\tEnter Name: ");
 	getchar();
 	scanf("%[^\n]s",newNode->_uName);
+	i = 0;
 	while(newNode->_uName[i]!='\0')
 	{
 		if(isalpha(newNode->_uName[i])==0)
@@ -48,6 +49,7 @@ UPD* signUp(UPD *upd, int *_id)
 		else
 			continue;
 		flagvalidate=2;
+		i++;
 	} 
 	printf("\n\tEnter Phone Number: ");
 	scanf("%d",&newNode->_phNo);
@@ -153,7 +155,7 @@ int writeUPD(UPD *upd)
 	if(upd == NULL)
 		printf("\n\t NULL Write pd");
 	while(upd != NULL){
-		fprintf(fp,"%d,%d,%s, %c, %d\n",upd->_id,upd->_phNo,upd->_uName,upd->_gender,upd->regFlag);
+		fprintf(fp,"%d, %d, %s, %c, %d\n",upd->_id,upd->_phNo,upd->_uName,upd->_gender,upd->regFlag);
 		//fprintf(stdout,"%d, %s, %c\n",pd->_id,pd->_name,pd->_gender);
 		upd = upd->next;
 	}
@@ -485,14 +487,13 @@ int tokenizeUPD(UPD *upd, char *tmpBuff)
 {
 	char *tokens;
 	int i, count;
-	char *tmpBuff1;
-
+	
 	if(tmpBuff!=NULL)
 	{
 	tokens = strtok(tmpBuff, ",");
 	upd->_id = atoi(tokens);
 	
-	tokens = strtok(tmpBuff, ",");
+	tokens = strtok(NULL, ",");
 	upd->_phNo = atoi(tokens);
 
 
