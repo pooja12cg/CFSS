@@ -1,6 +1,22 @@
+/*****************************************************************
+ * FILE_NAME    :    main.c
+ * DESCRIPTION  :    implementation of the binary search string
+ * RETURN_TYPE  :    returns success or failure
+ ***************************************************************/
+
+ /******************************************************************
+                	HEADER FILE
+ ***************************************************************/
 #include<common.h>
 
 
+
+/*******************************************************************
+ * FUNCTION_NAME  :   main
+ * DESCRIPTION    :   It takes the strings from user and search
+ *                        
+ * RETURN_TYPE    :   returns success or failure
+ ************************************************************/
 void AdminLogin()
 {
 	char aName[20];
@@ -22,6 +38,12 @@ void AdminLogin()
 
 
 }
+/*******************************************************************
+ * FUNCTION_NAME  :   main
+ * DESCRIPTION    :   It takes the strings from user and search
+ *                        
+ * RETURN_TYPE    :   returns success or failure
+ ************************************************************/
 int UpdateDetails(UPD *head)
 {
 	UPD _upd;

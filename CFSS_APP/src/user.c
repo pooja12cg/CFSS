@@ -1,4 +1,23 @@
+/*******************************************************************
+ * FILE_NAME      :   user.c
+ * DESCRIPTION    :   It takes the strings from user and search
+ *                        
+ * RETURN_TYPE    :   returns success or failure
+ ************************************************************/
+
+/***************************************************************
+ *                      HEADER FILE
+ * ************************************************************/
+
 #include <common.h>
+
+
+/*******************************************************************
+ * FUNCTION_NAME  :   main
+ * DESCRIPTION    :   It takes the strings from user and search
+ *                        
+ * RETURN_TYPE    :   returns success or failure
+ ************************************************************/
 void cfsActivation(CFSS *cfss, UPD *upd, int refID)
 {
 	int cfsActive=0;
@@ -71,6 +90,12 @@ void cfsActivation(CFSS *cfss, UPD *upd, int refID)
 	}
 
 }
+/*******************************************************************
+ * FUNCTION_NAME  :   main
+ * DESCRIPTION    :   It takes the strings from user and search
+ *                        
+ * RETURN_TYPE    :   returns success or failure
+ ************************************************************/
 void cfsDeactivation(CFSS *cfss)
 {
 	int cfsActive=0;
@@ -90,6 +115,12 @@ void cfsDeactivation(CFSS *cfss)
 
 }
 
+/*******************************************************************
+ * FUNCTION_NAME  :   main
+ * DESCRIPTION    :   It takes the strings from user and search
+ *                        
+ * RETURN_TYPE    :   returns success or failure
+ ************************************************************/
 void makeCall(UPD *hupd, CFSS *hcfss, int phno)
 {
 	int refID = 0, flag =0;
