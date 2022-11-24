@@ -32,7 +32,6 @@ int main()
 
 	while(1){
 
-		system("clear");
 		printf("%s", WelCome);
 		printf("%s", MainMenu);
 		scanf("%d",&ch);
@@ -75,7 +74,7 @@ int main()
 							case 2:
 								break;
 							default:
-								break;
+								printf("\n\tenter a correct choice");
 						}
 
 						admin=0;
