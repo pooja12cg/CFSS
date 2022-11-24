@@ -1,11 +1,10 @@
 #include <common.h>
 
-UPD* signUp(UPD *upd,CFSS *hcfss, int *_id)
+UPD* signUp(UPD *upd,int *_id)
 {
 	UPD *newNode =NULL;
 	UPD *head = NULL;
-	CFSS *newcfss=NULL;
-	CFSS *hCFSS=hcfss;
+	
 
 	int i;
 	int flagvalidate;
@@ -13,25 +12,7 @@ UPD* signUp(UPD *upd,CFSS *hcfss, int *_id)
 
 	head = upd;
 	
-	newcfss=(CFSS *)malloc(sizeof(CFSS));
-	newcfss->next = NULL;
-
-	if(hcfss == NULL)
-	{
-		//no records
-		hcfss = newcfss;
-		hCFSS = newcfss;
-	}
-	else
-	{
-		//records are present
-		while(hCFSS->next != NULL)
-			hCFSS = hCFSS->next;
-
-		hCFSS->next = newcfss;
-		hCFSS = hCFSS->next;
-	}
-
+	
 	newNode = (UPD *)malloc(sizeof(UPD));
 	newNode->next = NULL;
 	
@@ -87,12 +68,39 @@ UPD* signUp(UPD *upd,CFSS *hcfss, int *_id)
 		printf("\n\tInvalid Phone Number/Name "); 
 */
 	*_id = newNode->_id;
-	newcfss->cfsNumber=-1; 
-	newcfss->cfsActive=0;
-	strcpy(newcfss->status,"a");
-	newcfss->regFlag=0;
-        newcfss->_id=newNode->_id;
+	
 	return head;
+}
+
+CFSS *initCFSS(CFSS *head, int id)
+{
+	CFSS *tmpHead = head;
+	CFSS *newNode = NULL;
+
+	newNode = (CFSS *)malloc(sizeof(CFSS));
+	newNode->next = NULL;
+	
+	if(head == NULL)
+	{
+		head = newNode;
+		tmpHead = newNode;
+	}
+	else
+	{
+		while(tmpHead->next != NULL)
+			tmpHead = tmpHead->next;
+
+		tmpHead->next = newNode;
+		tmpHead = tmpHead->next;
+	}
+
+	newNode->cfsNumber=-1; 
+	newNode->cfsActive=0;
+	strcpy(newNode->status,"A");
+	newNode->regFlag=0;
+    newNode->_id=id;
+
+    return head;
 }
 
 
@@ -140,11 +148,11 @@ LD* signInDetails(LD *ld, int _id)
 	
 	return head;
 }
-int signInUser(LD *head)
+int signInUser(LD *head, int *refID)
 {
 	LD _ld;
 	int flag = 0;
-	
+	*refID = -1;
 	printf("\n\tEnter User Name: ");
 	scanf("%s", _ld._uName);
 	printf("\n\tEnter Password: ");
@@ -153,6 +161,7 @@ int signInUser(LD *head)
 	{
 		if((strcmp(head->_uName, _ld._uName)==0)&&(strcmp(head->_passwd, _ld._passwd)==0))
 		{
+			*refID = head->_id;
 			flag = 1;
 			break;
 		}
@@ -232,7 +241,7 @@ int writeCFSS(CFSS *cfss)
 	if(cfss == NULL)
 		printf("\n\t NULL Write CFSS");
 	while(cfss != NULL){
-		printf("\n%d = cfss->_id",cfss->_id);
+		/*printf("\n%d = cfss->_id",cfss->_id);*/
 		fprintf(fp,"%d, %d, %d, %d, %s\n",cfss->_id,cfss->regFlag,cfss->cfsNumber,cfss->cfsActive,cfss->status);
 		cfss = cfss->next;
 	}
