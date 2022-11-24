@@ -552,10 +552,7 @@ int signIn(LD *head)
 	return 0;
 }
 
-<<<<<<< HEAD
-=======
 int validatePhNo(CFSS *cfss, int _phNo) 
 {
 
 }
->>>>>>> e7811223417ea267f18f58b3167db2c39c99b3dc
