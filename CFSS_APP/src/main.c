@@ -1,9 +1,19 @@
 
-/*****************************************************************
- * FILE_NAME    :    main.c
- * DESCRIPTION  :    implementation of the binary search string
- * RETURN_TYPE  :    returns success or failure
- ****************************************************************/
+/****************************************************************************************************
+ * FILE NAME    : main.c
+ *
+ * DESCRIPTION  : Program to to extract Customer and cab driver details and perform login operation
+ *                
+ *
+ * Revision History:
+ *
+ * DATE         NAME                REFERENCE          REASON
+ ********************************************************************************************************
+ * 24-11-22    GROUP 04                New           Changes Committed
+ *********************************************************************************************************
+ * Copyright 2022, Altran Group All Rights Reserved
+ *
+ *******************************************************************************************************/
 
 /******************************************************************
  * 	              HEADER FILE

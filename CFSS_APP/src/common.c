@@ -1,5 +1,32 @@
+/****************************************************************************************************
+ * FILE NAME    : common.c
+ *
+ * DESCRIPTION  : Program to to extract Customer and cab driver details and perform login operation
+ *                
+ *
+ * Revision History:
+ *
+ * DATE         NAME                REFERENCE          REASON
+ ********************************************************************************************************
+ * 24-11-22    GROUP 04                New           Changes Committed
+ *********************************************************************************************************
+ * Copyright 2022, Altran Group All Rights Reserved
+ *
+ *******************************************************************************************************/
+
+/***************************************************************************
+*                           HEADER FILES
+*****************************************************************************/
+
 #include <common.h>
 
+/*******************************************************************
+ * FUNCTION NAME: get_string
+ * DESCRIPTION  : gets the a line from standerd input to the i th
+ *        	       element of array
+ * ARGUMENTD    :   Array of strings to be stored in 
+ * RETURNS      :  returns SUCCESS or FAILURE
+ *******************************************************************/
 UPD* signUp(UPD *upd,int *_id)
 {
 	UPD *newNode =NULL;
@@ -45,6 +72,13 @@ UPD* signUp(UPD *upd,int *_id)
 	return head;
 }
 
+/*******************************************************************
+ * FUNCTION NAME: get_string
+ * DESCRIPTION  : gets the a line from standerd input to the i th
+ *        	       element of array
+ * ARGUMENTD    :   Array of strings to be stored in 
+ * RETURNS      :  returns SUCCESS or FAILURE
+ *******************************************************************/
 CFSS *initCFSS(CFSS *head, int id)
 {
 	CFSS *tmpHead = head;
@@ -77,6 +111,13 @@ CFSS *initCFSS(CFSS *head, int id)
 }
 
 
+/*******************************************************************
+ * FUNCTION NAME: get_string
+ * DESCRIPTION  : gets the a line from standerd input to the i th
+ *        	       element of array
+ * ARGUMENTD    :   Array of strings to be stored in 
+ * RETURNS      :  returns SUCCESS or FAILURE
+ *******************************************************************/
 LD* signInDetails(LD *ld, int _id)
 {
 	LD *newNode =NULL;
@@ -97,7 +138,6 @@ LD* signInDetails(LD *ld, int _id)
 		//records are present
 		while(ld->next != NULL)
 			ld = ld->next;
-
 		ld->next = newNode;
 		ld = ld->next;
 	}
@@ -121,6 +161,13 @@ LD* signInDetails(LD *ld, int _id)
 	
 	return head;
 }
+/*******************************************************************
+ * FUNCTION NAME: get_string
+ * DESCRIPTION  : gets the a line from standerd input to the i th
+ *        	       element of array
+ * ARGUMENTD    :   Array of strings to be stored in 
+ * RETURNS      :  returns SUCCESS or FAILURE
+ *******************************************************************/
 int signInUser(LD *head, int *refID)
 {
 	LD _ld;
@@ -147,6 +194,13 @@ int signInUser(LD *head, int *refID)
 }
 
 
+/*******************************************************************
+ * FUNCTION NAME: get_string
+ * DESCRIPTION  : gets the a line from standerd input to the i th
+ *        	       element of array
+ * ARGUMENTD    :   Array of strings to be stored in 
+ * RETURNS      :  returns SUCCESS or FAILURE
+ *******************************************************************/
 int writeUPD(UPD *upd)
 {
 	FILE *fp = NULL;
@@ -173,6 +227,13 @@ int writeUPD(UPD *upd)
 	
 }
 
+/*******************************************************************
+ * FUNCTION NAME: get_string
+ * DESCRIPTION  : gets the a line from standerd input to the i th
+ *        	       element of array
+ * ARGUMENTD    :   Array of strings to be stored in 
+ * RETURNS      :  returns SUCCESS or FAILURE
+ *******************************************************************/
 int writeLD(LD *ld)
 {
 	FILE *fp = NULL;
@@ -199,6 +260,13 @@ int writeLD(LD *ld)
 	
 }
 
+/*******************************************************************
+ * FUNCTION NAME: get_string
+ * DESCRIPTION  : gets the a line from standerd input to the i th
+ *        	       element of array
+ * ARGUMENTD    :   Array of strings to be stored in 
+ * RETURNS      :  returns SUCCESS or FAILURE
+ *******************************************************************/
 int writeCFSS(CFSS *cfss)
 {
 	FILE *fp = NULL;
@@ -225,6 +293,13 @@ int writeCFSS(CFSS *cfss)
 	
 }
 
+/*******************************************************************
+ * FUNCTION NAME: get_string
+ * DESCRIPTION  : gets the a line from standerd input to the i th
+ *        	       element of array
+ * ARGUMENTD    :   Array of strings to be stored in 
+ * RETURNS      :  returns SUCCESS or FAILURE
+ *******************************************************************/
 
 UPD* loadUPD()
 {
@@ -263,31 +338,17 @@ UPD* loadUPD()
 				newNode = (UPD *)malloc(sizeof(UPD));
 				newNode->next = NULL;
 				head = newNode;
-<<<<<<< HEAD:CFSS_APP/src/common.c
 				upd = newNode;
 				tokenizeUPD(newNode, tmpBuff);
-=======
-				pd = newNode;
-				tokenizePD(newNode, tmpBuff);
-				memset(tmpBuff,'\0',256);
->>>>>>> 40bf07376039f6ad23ec43bffa9c0ad419067377:App1/common.c
-						
 			}
 			else /* rest of the records */
 			{
 				newNode = (UPD *)malloc(sizeof(UPD));
 				newNode->next = NULL;
-<<<<<<< HEAD:CFSS_APP/src/common.c
 				upd->next = newNode;
 				tokenizeUPD(newNode, tmpBuff);
 				upd = upd->next;
-=======
-				pd->next = newNode;
-				tokenizePD(newNode, tmpBuff);
-				pd = pd->next;	
                                 
-				memset(tmpBuff,'\0',256);
->>>>>>> 40bf07376039f6ad23ec43bffa9c0ad419067377:App1/common.c
 			}
 			memset(tmpBuff,'\0', 512);
 
@@ -300,6 +361,13 @@ UPD* loadUPD()
 
 }
 
+/*******************************************************************
+ * FUNCTION NAME: get_string
+ * DESCRIPTION  : gets the a line from standerd input to the i th
+ *        	       element of array
+ * ARGUMENTD    :   Array of strings to be stored in 
+ * RETURNS      :  returns SUCCESS or FAILURE
+ *******************************************************************/
 
 LD* loadLD()
 {
@@ -348,13 +416,7 @@ LD* loadLD()
 				tokenizeLD(newNode, tmpBuff);
 				ld = ld->next;	
 			}
-<<<<<<< HEAD:CFSS_APP/src/common.c
 			memset(tmpBuff,'\0', 512);
-=======
-
-				memset(tmpBuff,'\0',256);
->>>>>>> 40bf07376039f6ad23ec43bffa9c0ad419067377:App1/common.c
-			
 
 		}
 
@@ -365,6 +427,13 @@ LD* loadLD()
 
 }
 
+/*******************************************************************
+ * FUNCTION NAME: get_string
+ * DESCRIPTION  : gets the a line from standerd input to the i th
+ *        	       element of array
+ * ARGUMENTD    :   Array of strings to be stored in 
+ * RETURNS      :  returns SUCCESS or FAILURE
+ *******************************************************************/
 CFSS* loadCFSS()
 {
 	FILE *fp = NULL;
@@ -411,13 +480,8 @@ CFSS* loadCFSS()
 				tokenizeCFSS(newNode, tmpBuff);
 				cfss = cfss->next;	
 			}
-<<<<<<< HEAD:CFSS_APP/src/common.c
 			memset(tmpBuff,'\0', 512);
-=======
 			
-				memset(tmpBuff,'\0',256);
->>>>>>> 40bf07376039f6ad23ec43bffa9c0ad419067377:App1/common.c
-
 		}
 
 	}
@@ -427,6 +491,13 @@ CFSS* loadCFSS()
 
 }
 
+/*******************************************************************
+ * FUNCTION NAME: get_string
+ * DESCRIPTION  : gets the a line from standerd input to the i th
+ *        	       element of array
+ * ARGUMENTD    :   Array of strings to be stored in 
+ * RETURNS      :  returns SUCCESS or FAILURE
+ *******************************************************************/
 int readCFSS(CFSS *cfss)
 {
 	FILE *fp = NULL;
@@ -452,8 +523,15 @@ int readCFSS(CFSS *cfss)
 	fclose(fp);
 	return 0;
 
-
 }
+
+/*******************************************************************
+ * FUNCTION NAME: get_string
+ * DESCRIPTION  : gets the a line from standerd input to the i th
+ *        	       element of array
+ * ARGUMENTD    :   Array of strings to be stored in 
+ * RETURNS      :  returns SUCCESS or FAILURE
+ *******************************************************************/
 int readUPD(UPD *upd)
 {
 	FILE *fp = NULL;
@@ -483,16 +561,18 @@ int readUPD(UPD *upd)
 
 
 
+/*******************************************************************
+ * FUNCTION NAME: get_string
+ * DESCRIPTION  : gets the a line from standerd input to the i th
+ *        	       element of array
+ * ARGUMENTD    :   Array of strings to be stored in 
+ * RETURNS      :  returns SUCCESS or FAILURE
+ *******************************************************************/
 
 int tokenizeCFSS(CFSS *cfss, char *tmpBuff)
 {
 	char *tokens;
-<<<<<<< HEAD:CFSS_APP/src/common.c
 
-=======
-	int i, count;
-	char *tmpBuff1;
->>>>>>> 40bf07376039f6ad23ec43bffa9c0ad419067377:App1/common.c
 	if(tmpBuff!=NULL)
 	{
 	tokens = strtok(tmpBuff, ",");
@@ -520,41 +600,28 @@ int tokenizeCFSS(CFSS *cfss, char *tmpBuff)
 
 	tokens = strtok(NULL, ",");
 	removeLeading(tokens,cfss->status);
-<<<<<<< HEAD:CFSS_APP/src/common.c
-	cfss->status[strlen(cfss->status)-1] = '\0';
-	}
-
-
-	//cfs->_gender = tokens[0];
-	return 0;
-
-=======
         cfss->status[strlen(cfss->status)-1] = '\0';
-	//dispPD(pd);
 	}
 	return 0;
->>>>>>> 40bf07376039f6ad23ec43bffa9c0ad419067377:App1/common.c
 }
+/*******************************************************************
+ * FUNCTION NAME: get_string
+ * DESCRIPTION  : gets the a line from standerd input to the i th
+ *        	       element of array
+ * ARGUMENTD    :   Array of strings to be stored in 
+ * RETURNS      :  returns SUCCESS or FAILURE
+ *******************************************************************/
 int tokenizeUPD(UPD *upd, char *tmpBuff)
 {
 	char *tokens;
-<<<<<<< HEAD:CFSS_APP/src/common.c
 	
-=======
-	int i, count;
-	char *tmpBuff1;
->>>>>>> 40bf07376039f6ad23ec43bffa9c0ad419067377:App1/common.c
 	if(tmpBuff!=NULL)
 	{
 	tokens = strtok(tmpBuff, ",");
 	upd->_id = atoi(tokens);
 	
-<<<<<<< HEAD:CFSS_APP/src/common.c
 	tokens = strtok(NULL, ",");
 	upd->_phNo = atoi(tokens);
-=======
->>>>>>> 40bf07376039f6ad23ec43bffa9c0ad419067377:App1/common.c
-
 
 	tokens = strtok(NULL, ",");
 	removeLeading(tokens,upd->_uName);
@@ -563,7 +630,6 @@ int tokenizeUPD(UPD *upd, char *tmpBuff)
 
 	tokens = strtok(NULL, ",");
 	removeLeading(tokens,tokens);
-<<<<<<< HEAD:CFSS_APP/src/common.c
 	upd->_gender=tokens[0];
 
 	tokens = strtok(NULL, ",");
@@ -571,16 +637,16 @@ int tokenizeUPD(UPD *upd, char *tmpBuff)
 	}
 
 	return 0;
-=======
-	pd->_gender = tokens[0];
-
-	tokens=strtok(NULL, ",");
-	pd->regFlag=atoi(tokens);
-	}
->>>>>>> 40bf07376039f6ad23ec43bffa9c0ad419067377:App1/common.c
 }
 
 
+/*******************************************************************
+ * FUNCTION NAME: get_string
+ * DESCRIPTION  : gets the a line from standerd input to the i th
+ *        	       element of array
+ * ARGUMENTD    :   Array of strings to be stored in 
+ * RETURNS      :  returns SUCCESS or FAILURE
+ *******************************************************************/
 int tokenizeLD(LD *ld, char *tmpBuff)
 {
 	char *tokens;
@@ -595,18 +661,19 @@ int tokenizeLD(LD *ld, char *tmpBuff)
 	
 	tokens = strtok(NULL, ",");
 	removeLeading(tokens,ld->_passwd);
-<<<<<<< HEAD:CFSS_APP/src/common.c
-	ld->_passwd[strlen(ld->_passwd)-1] = '\0';
-	//dispPD(pd);
-=======
-
         ld->_passwd[strlen(ld->_passwd)-1] = '\0';
 
 	}
->>>>>>> 40bf07376039f6ad23ec43bffa9c0ad419067377:App1/common.c
 	return 0;
 }
 
+/*******************************************************************
+ * FUNCTION NAME: get_string
+ * DESCRIPTION  : gets the a line from standerd input to the i th
+ *        	       element of array
+ * ARGUMENTD    :   Array of strings to be stored in 
+ * RETURNS      :  returns SUCCESS or FAILURE
+ *******************************************************************/
 void removeLeading(char *str, char *str1)
 {
     int idx = 0, j, k = 0;
@@ -625,6 +692,13 @@ void removeLeading(char *str, char *str1)
     str1[k] = '\0';
  
 }
+/*******************************************************************
+ * FUNCTION NAME: get_string
+ * DESCRIPTION  : gets the a line from standerd input to the i th
+ *        	       element of array
+ * ARGUMENTD    :   Array of strings to be stored in 
+ * RETURNS      :  returns SUCCESS or FAILURE
+ *******************************************************************/
 void removeTrailing(char *str)
 {
 	if((str[strlen(str)-1] == ' ' || str[strlen(str)-1] == '\t' || str[strlen(str)-1] == '\n'))
@@ -634,10 +708,3 @@ void removeTrailing(char *str)
 	
 }
 
-<<<<<<< HEAD:CFSS_APP/src/common.c
-=======
-int validatePhNo(CFSS *cfss, int _phNo) 
-{
-
-}
->>>>>>> 40bf07376039f6ad23ec43bffa9c0ad419067377:App1/common.c
