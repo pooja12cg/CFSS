@@ -1,11 +1,10 @@
 #include <common.h>
-
 void cfsActivation(CFSS *cfss, UPD *upd, int refID)
 {
 	int cfsActive=0;
 	int cfsNumber=0;
-	int cfs=0;
-	int flag=0;
+	int flag = 0;
+	int cfs =0;
 
 	while(upd != NULL)
 	{
@@ -19,6 +18,8 @@ void cfsActivation(CFSS *cfss, UPD *upd, int refID)
 	}
 
 	
+
+
 	while(cfss != NULL)
 	{
 		if(cfss->_id == refID)
@@ -45,26 +46,23 @@ void cfsActivation(CFSS *cfss, UPD *upd, int refID)
 		switch(cfs)
 		{
 			case 1:
+				printf("\n\tYour Call has been forwarded to Unconditional type");
 				strcpy(cfss->status, "Unconditional");
-				/*printf("\n\tCall has been forwarded to ");
-				printf("%d Unconditional type",cfsNumber);*/
+				printf("\n\tYour Call has been forwarded to Unconditional type");
 				break;
 			case 2:
 				strcpy(cfss->status, "No Reply");
+				printf("\n\tYour Call has been forwarded to No Reply type");
 				
-				/*printf("\n\tCall has been forwarded to ");
-				printf("%d No Reply type",cfsNumber);*/
 				break;
 
 			case 3:
 				strcpy(cfss->status, "Busy");
-				/*printf("\n\tCall has been forwarded to ");
-				printf("%d Busy type",cfsNumber);*/
+				printf("\n\tYour Call has been forwarded to Busy type");
 				break;
 			default:
 				printf("\n\tEnter a Correct Choice");
 		}
-		//head = head->next;
 	}
 	
 	else
@@ -75,15 +73,19 @@ void cfsActivation(CFSS *cfss, UPD *upd, int refID)
 }
 void cfsDeactivation(CFSS *cfss)
 {
-	/*if(cfsActive==0)
+	int cfsActive=0;
+
+	printf("\n\tDo you want to deactivate the call(0/1): ");
+	scanf("%d",&cfsActive);
+	if(cfsActive==1)
 	{
-		printf("\n\t User has not activated Call forwarding services ");
+		printf("\tDeactivated Call forwarding services ");
 	}
 	else
 	{
-		printf("\n\tDeactivation Successful");
+		printf("\tUser has not activated Call forwrding services");
 		cfsActive = 0;
-	}*/
+	}
 	//head = head->next;
 
 }

@@ -2,7 +2,7 @@
 #include <configMenu.h>
 
 int main()
-{	
+{
 	UPD *upd = NULL;
 	UPD *headupd = NULL;
 	LD *ld = NULL;
@@ -18,13 +18,10 @@ int main()
 	int ch = 0, _id=0;
 	int regFlag=0;
 	int cfsNumber=0;
-	int PhoneNo;
-	int refId = 0;
 
 	headupd = loadUPD();
 	upd = headupd;
 	headcfss = loadCFSS();
-	
 	cfss = headcfss;
 	
 	headld = loadLD(ld);
@@ -45,15 +42,12 @@ int main()
 			case 1:
 				headupd = signUp(headupd,&_id);
 				headld = signInDetails(headld, _id);
-				headcfss = initCFSS(headcfss, _id);
-					
 				//dispPD(headpd);
 				//dispLD(headld);
 				// writePD(headpd);
 				// writeLD(headld);
 				//headpd = pd;
 				//headld = ld;
-				//writeCFSS(headcfss);
 				printf("\n\tSuccessfully Registered\n");
 				sleep(2);
 				break;
@@ -62,12 +56,12 @@ int main()
 				//readPD(headpd);
 
 				printf("\n\t******************LOGIN PAGE ****************");
-				printf("\n\nPress \n\t1.Login as Admin \n\t2.Login as User \n\tChoose :");
+				printf("\n\tPress \n\t1.Login as Admin \n\t2.Login as User \n\tChoose :");
 				scanf("%d",&login);
 				switch (login)
 				{
 					case 1:
-						/*AdminLogin();
+						AdminLogin();
 						printf("\n\tSUCCESSFULLY LOGGED IN\n");
 						printf("\n\nPress \n\t1.Update \n\t2.Delete \n\tChoose :");
 						scanf("%d",&admin);
@@ -78,15 +72,18 @@ int main()
 								writeUPD(headupd);
 								break;
 							case 2:
+								DeleteUser(headupd);
+								writeUPD(headupd);
 								break;
 							default:
+								printf("\n\tEnter a correct choice");
 								break;
 						}
 
-						admin=0;*/
+						admin=0;
 						break;
 					case 2:
-						if(signInUser(headld, &refId) == 0)
+						if(signInUser(headld) == 0)
 						{
 							printf("\n\tUser/password does not match db\n");
 							break;
@@ -95,13 +92,13 @@ int main()
 						{
 
 							printf("\n\tSUCCESSFULLY LOGGED IN\n");
-							
+							int regFlag=1;
 						}
 
 						printf("\n\tPress \n\t1.Register for CFSS \n\t2.Unregister for CFSS \n\t3.Make	a call \n\t4.Exit ");
 						printf("\n\tEnter your Choice : ");
 						scanf("%d",&user);
-						
+						int PhoneNo;
 						switch(user)
 						{
 							case 1 :
@@ -115,8 +112,7 @@ int main()
 								{
 									case 1 :
 										printf("\n\tCALL FORWARDING ACTIVATION PAGE");
-										cfsActivation(headcfss,headupd, refId);
-										sleep(2);
+										cfsActivation(headcfss);
 										break;
 										/*printf("\n\tDo you want to activate Call Forwarding services(0/1) : ");
 										scanf("%d",&act);
@@ -160,7 +156,6 @@ int main()
 									case 2 :
 										//printf("\n\t3.Return to deactive menu");
 										cfsDeactivation(headcfss);
-										sleep(2);
 										break;
 									case 3 :
 										printf("\n\tReturning to previous menu");
@@ -194,7 +189,7 @@ int main()
 								//int PhoneNo;
 								printf("Enter the number You want to make a call: ");
 								scanf("%d",&PhoneNo);
-								makeCall(headupd , headcfss, PhoneNo);
+
 							case 4 :
 								exit(EXIT_SUCCESS);
 							default :
@@ -205,7 +200,6 @@ int main()
 					default:
 						printf("\n\tEnter a Correct Choice");
 				}
-				break;
 				/*if(signIn(headld) == 0){
 					printf("\n\tUser/password does not match db\n");
 
@@ -229,8 +223,7 @@ int main()
 			case 3:
 				writeUPD(headupd);
 				writeLD(headld);
-				writeCFSS(headcfss);
-				printf("\n\tThankyou for using CFSS\n\n");
+				printf("\n\tThankyou for using CFSS");
 				exit(EXIT_SUCCESS);
 			default:
 				printf("\n\tEnter the correct choice\n");
