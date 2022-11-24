@@ -66,7 +66,7 @@ int main()
 				//readPD(headpd);
 
 				printf("\n\t******************LOGIN PAGE ****************");
-				printf("\n\nPress \n\t1.Login as Admin \n\t2.Login as User \n\tChoose :");
+				printf("\n\tPress \n\t1.Login as Admin \n\t2.Login as User \n\tChoose :");
 				scanf("%d",&login);
 				switch (login)
 				{
@@ -76,8 +76,12 @@ int main()
 					case 2:
 						if(signIn(headld) == 0)
 						{
+<<<<<<< HEAD
 							printf("\n\tUser/password does not match db\n");
 							break;
+=======
+							printf("\n\tUser/password does not match database\n");
+>>>>>>> e4fb174a381e886ac43d3a264aa5fb89e105c215
 						}
 						else
 						{
@@ -85,6 +89,7 @@ int main()
 							printf("\n\tSUCCESSFULLY LOGGED IN\n");
 							int regFlag=1;
 						}
+					
 
 						printf("\n\tPress \n\t1.Register for CFSS \n\t2.Unregister for CFSS \n\t3.Make	a call \n\t4.Exit ");
 						printf("\n\tEnter your Choice : ");
@@ -180,6 +185,7 @@ int main()
 								printf("Enter the number You want to make a call: ");
 								scanf("%d",&PhoneNo);
 
+
 							case 4 :
 								exit(EXIT_SUCCESS);
 							default :
@@ -213,8 +219,9 @@ int main()
 				writePD(headpd);
 				writeLD(headld);
 				exit(EXIT_SUCCESS);
+				break;
 			default:
-				printf("\n\tEnter the correct choice\n");
+				printf("\n\tEnter a valid option\n");
 
 		}
 
