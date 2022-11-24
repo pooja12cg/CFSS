@@ -34,13 +34,16 @@ typedef struct callForwarding
 	char status[20];
 	struct callForwarding *next;
 }CFSS;
-UPD *signUp(UPD *,CFSS *, int*);
+
+UPD *signUp(UPD *, int*);
 LD *signInDetails(LD*, int);
-int  signInUser(LD *);
+
+int  signInUser(LD *, int *);
 
 UPD * loadUPD();
 LD * loadLD();
 CFSS * loadCFSS();
+CFSS *initCFSS(CFSS *, int);
 
 int tokenizeUPD(UPD *, char*);
 int tokenizeLD(LD *, char*);
@@ -59,8 +62,9 @@ void removeTrailing(char *);
 
 void AdminLogin();
 int UpdateDetails(UPD *);
-void cfsActivation(CFSS *);
+void cfsActivation(CFSS *, UPD *, int);
 void cfsDeactivation(CFSS *);
 
+void makeCall(UPD *, CFSS *, int );
 
 #endif
