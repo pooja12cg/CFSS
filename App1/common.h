@@ -1,12 +1,30 @@
+/*******************************************************************************
+			USER DEFINED MACROS
+*********************************************************************************/
 #ifndef COMMON_H
 #define COMMON_H
-
+/*******************************************************************************
+**	FILE NAME       :	common.h
+**
+**	DESCRIPTION	:	this file includes standard header files, macros definition,
+**				structure prototype, global variables, function prototypes
+**				which are utilized in main1.c and common.c	
+** 						
+** DATE		 NAME		     REFERENCE		REASON
+**
+**21-11-2022    Group04	                New	    Initial Version          
+**
+**
+**  Copyright 2010, Aricent Technologies (Holdings) Ltd
+*********************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 #include <unistd.h>
-
+/*******************************************************************************
+			STRUCTURES
+*********************************************************************************/
 typedef struct personalDetails
 {
 	int _id;
@@ -35,13 +53,18 @@ typedef struct callForwarding
 	struct callForwarding *next;
 }CFSS;
 
-
+/*******************************************************************************
+				FUNCTION DECLARATIONS
+*********************************************************************************/
 PD *loadPD();
 LD *loadLD();
 CFSS *loadCFFS();
 PD* signUp(PD *, int*);
 LD* signInDetails(LD *, int);
 
+/*******************************************************************************
+				FUNCTION DECLARATIONS
+*********************************************************************************/
 int signIn(LD *);
 int readPD(PD *);
 int writePD(PD *);
