@@ -94,16 +94,11 @@ int main()
 					case 2:
 						if(signIn(headld) == 0)
 						{
-<<<<<<< HEAD
+
 							printf("\n\tUser/password does not match database\n");/*printing formatted output*/
-=======
-<<<<<<< HEAD
 							printf("\n\tUser/password does not match db\n");
 							break;
-=======
 							printf("\n\tUser/password does not match database\n");
->>>>>>> e4fb174a381e886ac43d3a264aa5fb89e105c215
->>>>>>> e7811223417ea267f18f58b3167db2c39c99b3dc
 						}
 						else
 						{
@@ -129,14 +124,11 @@ int main()
 								switch(ch1)
 								{
 									case 1 :
-<<<<<<< HEAD
 										printf("\n\tCALL FORWARDING ACTIVATION PAGE");/*printing formatted output*/
 										cfsActivation(headcfss);/*function calling*/
-=======
 										printf("\n\tCALL FORWARDING ACTIVATION PAGE");
 										cfsActivation(headcfss);
 										break;
->>>>>>> e7811223417ea267f18f58b3167db2c39c99b3dc
 										/*printf("\n\tDo you want to activate Call Forwarding services(0/1) : ");
 										scanf("%d",&act);
 										if(act)

@@ -58,7 +58,7 @@ typedef struct callForwarding
 *********************************************************************************/
 PD *loadPD();
 LD *loadLD();
-CFSS *loadCFSS();
+CFSS *loadCFFS();
 PD* signUp(PD *, int*);
 LD* signInDetails(LD *, int);
 

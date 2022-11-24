@@ -209,6 +209,7 @@ PD* loadPD()
 				head = newNode;
 				pd = newNode;
 				tokenizePD(newNode, tmpBuff);
+				memset(tmpBuff,'\0',256);
 						
 			}
 			else /* rest of the records */
@@ -218,6 +219,8 @@ PD* loadPD()
 				pd->next = newNode;
 				tokenizePD(newNode, tmpBuff);
 				pd = pd->next;	
+                                
+				memset(tmpBuff,'\0',256);
 			}
 			
 
@@ -281,6 +284,8 @@ LD* loadLD()
 				tokenizeLD(newNode, tmpBuff);
 				ld = ld->next;	
 			}
+
+				memset(tmpBuff,'\0',256);
 			
 
 		}
@@ -343,6 +348,7 @@ CFSS* loadCFSS()
 				cfss = cfss->next;	
 			}
 			
+				memset(tmpBuff,'\0',256);
 
 		}
 
@@ -436,41 +442,53 @@ int tokenizeCFSS(CFSS *cfss, char *tmpBuff)
 	char *tokens;
 	int i, count;
 	char *tmpBuff1;
-
+	if(tmpBuff!=NULL)
+	{
 	tokens = strtok(tmpBuff, ",");
 	cfss->_id = atoi(tokens);
+ 	
+	tokens=strtok(NULL , ",");
+	cfss->regFlag = atoi(tokens);
 
+ 	tokens=strtok(NULL , ",");
+	cfss->cfsNumber=atoi(tokens);
+
+
+ 	tokens=strtok(NULL , ",");
+	cfss->cfsActive = atoi(tokens);
+	
+ 
 	tokens = strtok(NULL, ",");
 	removeLeading(tokens,cfss->status);
-	
-	/*tokens = strtok(NULL, ",");
-	removeLeading(tokens,tokens);
-	removeTrailing(tokens);
-	cfs->_gender = tokens[0];*/
-
+        cfss->status[strlen(cfss->status)-1] = '\0';
+	//dispPD(pd);
+	}
+	return 0;
 }
 int tokenizePD(PD *pd, char *tmpBuff)
 {
 	char *tokens;
 	int i, count;
 	char *tmpBuff1;
-
+	if(tmpBuff!=NULL)
+	{
 	tokens = strtok(tmpBuff, ",");
 	pd->_id = atoi(tokens);
 	
-	/*tokens = strtok(tmpBuff, ",");
-	pd->_phNo = atoi(tokens);*/
 
 
 	tokens = strtok(NULL, ",");
 	removeLeading(tokens,pd->_name);
 	
+
+
 	tokens = strtok(NULL, ",");
 	removeLeading(tokens,tokens);
-	removeTrailing(tokens);
 	pd->_gender = tokens[0];
 
-	//dispPD(pd);
+	tokens=strtok(NULL, ",");
+	pd->regFlag=atoi(tokens);
+	}
 }
 
 
@@ -480,6 +498,8 @@ int tokenizeLD(LD *ld, char *tmpBuff)
 	int i, count;
 	char *tmpBuff1;
 
+	if(tmpBuff!=NULL)
+	{
 	tokens = strtok(tmpBuff, ",");
 	ld->_id = atoi(tokens);
 
@@ -488,8 +508,11 @@ int tokenizeLD(LD *ld, char *tmpBuff)
 	
 	tokens = strtok(NULL, ",");
 	removeLeading(tokens,ld->_passwd);
-	removeTrailing(ld->_passwd);
-	//dispPD(pd);
+
+        ld->_passwd[strlen(ld->_passwd)-1] = '\0';
+
+	}
+	return 0;
 }
 
 void removeLeading(char *str, char *str1)
@@ -552,10 +575,7 @@ int signIn(LD *head)
 	return 0;
 }
 
-<<<<<<< HEAD
-=======
 int validatePhNo(CFSS *cfss, int _phNo) 
 {
 
 }
->>>>>>> e7811223417ea267f18f58b3167db2c39c99b3dc
