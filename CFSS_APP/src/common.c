@@ -263,17 +263,31 @@ UPD* loadUPD()
 				newNode = (UPD *)malloc(sizeof(UPD));
 				newNode->next = NULL;
 				head = newNode;
+<<<<<<< HEAD:CFSS_APP/src/common.c
 				upd = newNode;
 				tokenizeUPD(newNode, tmpBuff);
+=======
+				pd = newNode;
+				tokenizePD(newNode, tmpBuff);
+				memset(tmpBuff,'\0',256);
+>>>>>>> 40bf07376039f6ad23ec43bffa9c0ad419067377:App1/common.c
 						
 			}
 			else /* rest of the records */
 			{
 				newNode = (UPD *)malloc(sizeof(UPD));
 				newNode->next = NULL;
+<<<<<<< HEAD:CFSS_APP/src/common.c
 				upd->next = newNode;
 				tokenizeUPD(newNode, tmpBuff);
 				upd = upd->next;
+=======
+				pd->next = newNode;
+				tokenizePD(newNode, tmpBuff);
+				pd = pd->next;	
+                                
+				memset(tmpBuff,'\0',256);
+>>>>>>> 40bf07376039f6ad23ec43bffa9c0ad419067377:App1/common.c
 			}
 			memset(tmpBuff,'\0', 512);
 
@@ -334,7 +348,12 @@ LD* loadLD()
 				tokenizeLD(newNode, tmpBuff);
 				ld = ld->next;	
 			}
+<<<<<<< HEAD:CFSS_APP/src/common.c
 			memset(tmpBuff,'\0', 512);
+=======
+
+				memset(tmpBuff,'\0',256);
+>>>>>>> 40bf07376039f6ad23ec43bffa9c0ad419067377:App1/common.c
 			
 
 		}
@@ -392,7 +411,12 @@ CFSS* loadCFSS()
 				tokenizeCFSS(newNode, tmpBuff);
 				cfss = cfss->next;	
 			}
+<<<<<<< HEAD:CFSS_APP/src/common.c
 			memset(tmpBuff,'\0', 512);
+=======
+			
+				memset(tmpBuff,'\0',256);
+>>>>>>> 40bf07376039f6ad23ec43bffa9c0ad419067377:App1/common.c
 
 		}
 
@@ -463,12 +487,28 @@ int readUPD(UPD *upd)
 int tokenizeCFSS(CFSS *cfss, char *tmpBuff)
 {
 	char *tokens;
+<<<<<<< HEAD:CFSS_APP/src/common.c
 
+=======
+	int i, count;
+	char *tmpBuff1;
+>>>>>>> 40bf07376039f6ad23ec43bffa9c0ad419067377:App1/common.c
 	if(tmpBuff!=NULL)
 	{
 	tokens = strtok(tmpBuff, ",");
 	cfss->_id = atoi(tokens);
+ 	
+	tokens=strtok(NULL , ",");
+	cfss->regFlag = atoi(tokens);
 
+ 	tokens=strtok(NULL , ",");
+	cfss->cfsNumber=atoi(tokens);
+
+
+ 	tokens=strtok(NULL , ",");
+	cfss->cfsActive = atoi(tokens);
+	
+ 
 	tokens = strtok(NULL, ",");
 	cfss->regFlag = atoi(tokens);
 
@@ -480,6 +520,7 @@ int tokenizeCFSS(CFSS *cfss, char *tmpBuff)
 
 	tokens = strtok(NULL, ",");
 	removeLeading(tokens,cfss->status);
+<<<<<<< HEAD:CFSS_APP/src/common.c
 	cfss->status[strlen(cfss->status)-1] = '\0';
 	}
 
@@ -487,25 +528,42 @@ int tokenizeCFSS(CFSS *cfss, char *tmpBuff)
 	//cfs->_gender = tokens[0];
 	return 0;
 
+=======
+        cfss->status[strlen(cfss->status)-1] = '\0';
+	//dispPD(pd);
+	}
+	return 0;
+>>>>>>> 40bf07376039f6ad23ec43bffa9c0ad419067377:App1/common.c
 }
 int tokenizeUPD(UPD *upd, char *tmpBuff)
 {
 	char *tokens;
+<<<<<<< HEAD:CFSS_APP/src/common.c
 	
+=======
+	int i, count;
+	char *tmpBuff1;
+>>>>>>> 40bf07376039f6ad23ec43bffa9c0ad419067377:App1/common.c
 	if(tmpBuff!=NULL)
 	{
 	tokens = strtok(tmpBuff, ",");
 	upd->_id = atoi(tokens);
 	
+<<<<<<< HEAD:CFSS_APP/src/common.c
 	tokens = strtok(NULL, ",");
 	upd->_phNo = atoi(tokens);
+=======
+>>>>>>> 40bf07376039f6ad23ec43bffa9c0ad419067377:App1/common.c
 
 
 	tokens = strtok(NULL, ",");
 	removeLeading(tokens,upd->_uName);
 	
+
+
 	tokens = strtok(NULL, ",");
 	removeLeading(tokens,tokens);
+<<<<<<< HEAD:CFSS_APP/src/common.c
 	upd->_gender=tokens[0];
 
 	tokens = strtok(NULL, ",");
@@ -513,6 +571,13 @@ int tokenizeUPD(UPD *upd, char *tmpBuff)
 	}
 
 	return 0;
+=======
+	pd->_gender = tokens[0];
+
+	tokens=strtok(NULL, ",");
+	pd->regFlag=atoi(tokens);
+	}
+>>>>>>> 40bf07376039f6ad23ec43bffa9c0ad419067377:App1/common.c
 }
 
 
@@ -520,6 +585,8 @@ int tokenizeLD(LD *ld, char *tmpBuff)
 {
 	char *tokens;
 
+	if(tmpBuff!=NULL)
+	{
 	tokens = strtok(tmpBuff, ",");
 	ld->_id = atoi(tokens);
 
@@ -528,8 +595,15 @@ int tokenizeLD(LD *ld, char *tmpBuff)
 	
 	tokens = strtok(NULL, ",");
 	removeLeading(tokens,ld->_passwd);
+<<<<<<< HEAD:CFSS_APP/src/common.c
 	ld->_passwd[strlen(ld->_passwd)-1] = '\0';
 	//dispPD(pd);
+=======
+
+        ld->_passwd[strlen(ld->_passwd)-1] = '\0';
+
+	}
+>>>>>>> 40bf07376039f6ad23ec43bffa9c0ad419067377:App1/common.c
 	return 0;
 }
 
@@ -560,3 +634,10 @@ void removeTrailing(char *str)
 	
 }
 
+<<<<<<< HEAD:CFSS_APP/src/common.c
+=======
+int validatePhNo(CFSS *cfss, int _phNo) 
+{
+
+}
+>>>>>>> 40bf07376039f6ad23ec43bffa9c0ad419067377:App1/common.c
