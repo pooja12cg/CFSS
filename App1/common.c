@@ -14,7 +14,6 @@ PD* signUp(PD *pd, int *_id)
 		//no records
 		head = newNode;
 		pd = newNode;
-		printf("\n\tNNPD");
 	}
 	else
 	{
@@ -24,7 +23,6 @@ PD* signUp(PD *pd, int *_id)
 
 		pd->next = newNode;
 		pd = pd->next;
-		printf("\n\tNoNPD");
 	}
 
 	//pd = newNode;
@@ -63,7 +61,6 @@ LD* signInDetails(LD *ld, int _id)
 		//no records
 		head = newNode;
 		ld = newNode;
-		printf("\n\tNNPD");
 	}
 	else
 	{
@@ -73,7 +70,6 @@ LD* signInDetails(LD *ld, int _id)
 
 		ld->next = newNode;
 		ld = ld->next;
-		printf("\n\tNoNPD");
 	}
 
 	
@@ -358,7 +354,7 @@ CFSS* loadCFSS()
 
 }
 
-int writeCFSS(CFSS *cfs)
+int writeCFSS(CFSS *cfss)
 {
 	FILE *fp = NULL;
 
@@ -370,19 +366,19 @@ int writeCFSS(CFSS *cfs)
 	}
 
 	//fseek(fp, 0L, SEEK_END);
-	if(cfs == NULL)
+	if(cfss == NULL)
 		printf("\n\t NULL Write CFSS");
-	while(cfs != NULL){
+	while(cfss != NULL){
 		//printf("\n%d = %c", ld->_passwd[strlen(ld->_passwd)-1],ld->_passwd[strlen(ld->_passwd)-1]);
-		fprintf(fp,"%d, %d, %d, %d, %s\n",cfs->_id,cfs->regFlag,cfs->cfsNumber,cfs->cfsActive,cfs->status);
-		cfs = cfs->next;
+		fprintf(fp,"%d, %d, %d, %d, %s\n",cfss->_id,cfss->regFlag,cfss->cfsNumber,cfss->cfsActive,cfss->status);
+		cfss = cfss->next;
 	}
 
 	fclose(fp);
 
 	
 }
-int readCFSS(CFSS *cfs)
+int readCFSS(CFSS *cfss)
 {
 	FILE *fp = NULL;
 	char tmpBuff[256] = {'\0', };
@@ -435,17 +431,17 @@ int readPD(PD *pd)
 
 }
 
-int tokenizeCFSS(CFSS *cfs, char *tmpBuff)
+int tokenizeCFSS(CFSS *cfss, char *tmpBuff)
 {
 	char *tokens;
 	int i, count;
 	char *tmpBuff1;
 
 	tokens = strtok(tmpBuff, ",");
-	cfs->_id = atoi(tokens);
+	cfss->_id = atoi(tokens);
 
 	tokens = strtok(NULL, ",");
-	removeLeading(tokens,cfs->status);
+	removeLeading(tokens,cfss->status);
 	
 	/*tokens = strtok(NULL, ",");
 	removeLeading(tokens,tokens);
@@ -461,6 +457,10 @@ int tokenizePD(PD *pd, char *tmpBuff)
 
 	tokens = strtok(tmpBuff, ",");
 	pd->_id = atoi(tokens);
+	
+	/*tokens = strtok(tmpBuff, ",");
+	pd->_phNo = atoi(tokens);*/
+
 
 	tokens = strtok(NULL, ",");
 	removeLeading(tokens,pd->_name);
@@ -550,4 +550,9 @@ int signIn(LD *head)
 	if(flag == 1)
 		return 1;
 	return 0;
+}
+
+int validatePhNo(CFSS *cfss, int _phNo) 
+{
+
 }

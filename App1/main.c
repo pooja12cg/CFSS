@@ -77,6 +77,7 @@ int main()
 						if(signIn(headld) == 0)
 						{
 							printf("\n\tUser/password does not match db\n");
+							break;
 						}
 						else
 						{
@@ -103,6 +104,7 @@ int main()
 									case 1 :
 										printf("\n\tCALL FORWARDING ACTIVATION PAGE");
 										cfsActivation(headcfss);
+										break;
 										/*printf("\n\tDo you want to activate Call Forwarding services(0/1) : ");
 										scanf("%d",&act);
 										if(act)
