@@ -213,7 +213,7 @@ int writeUPD(UPD *upd)
 {
 	FILE *fp = NULL;
 
-	fp = fopen("./data/PD.dat","w+");
+	fp = fopen("PD.dat","w+");
 	if(fp == NULL)
 	{
 		perror("\n\tfopen() ");
@@ -247,7 +247,7 @@ int writeLD(LD *ld)
 {
 	FILE *fp = NULL;
 
-	fp = fopen("./data/LD.dat","w+");
+	fp = fopen("LD.dat","w+");
 	if(fp == NULL)
 	{
 		perror("\n\tfopen() ");
@@ -281,7 +281,7 @@ int writeCFSS(CFSS *cfss)
 {
 	FILE *fp = NULL;
 
-	fp = fopen("./data/CFSS.dat","w+");
+	fp = fopen("CFSS.dat","w+");
 	if(fp == NULL)
 	{
 		perror("\n\tfopen() ");
@@ -321,7 +321,7 @@ UPD* loadUPD()
 	int _fSize = 0;
 	char tmpBuff[512] = {'\0', };
 	
-	fp = fopen("./data/PD.dat","r");
+	fp = fopen("PD.dat","r");
 	if(fp == NULL)
 	{
 		perror("\n\tfopen() ");
@@ -390,7 +390,7 @@ LD* loadLD()
 	int _fSize = 0;
 	char tmpBuff[512] = {'\0', };
 	
-	fp = fopen("./data/LD.dat","r");
+	fp = fopen("LD.dat","r");
 	if(fp == NULL)
 	{
 		perror("\n\tfopen() ");
@@ -457,7 +457,7 @@ CFSS* loadCFSS()
 	int _fSize = 0;
 	char tmpBuff[512] = {'\0', };
 	
-	fp = fopen("./data/CFSS.dat","r");
+	fp = fopen("CFSS.dat","r");
 	if(fp == NULL)
 	{
 		perror("\n\tfopen() ");
@@ -519,7 +519,7 @@ int readCFSS(CFSS *cfss)
 	char tmpBuff[512] = {'\0', };
 	CFSS tmpcfs;
 
-	fp = fopen("./data/CFSS.dat","r");
+	fp = fopen("CFSS.dat","r");
 	if(fp == NULL)
 	{
 		perror("\n\tfopen() ");
@@ -554,7 +554,7 @@ int readUPD(UPD *upd)
 	char tmpBuff[512] = {'\0', };
 	UPD tmpupd;
 
-	fp = fopen("./data/PD.dat","r");
+	fp = fopen("PD.dat","r");
 	if(fp == NULL)
 	{
 		perror("\n\tfopen() ");

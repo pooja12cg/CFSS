@@ -57,7 +57,9 @@ int main()
 	while(1){
 
 		system("clear");
+		printf("%s",style);
 		printf("%s", WelCome);
+		printf("%s",style);
 		printf("%s", MainMenu);
 		scanf("%d",&ch);
 		
@@ -82,7 +84,8 @@ int main()
 			case 2:
 				//readPD(headpd);
 
-				printf("\n\t******************LOGIN PAGE ****************");
+				printf("\n\t*****************************LOGIN PAGE ****************************");
+		printf("%s",style);
 				/*printf("\n\tPress \n\t1.Login as Admin \n\t2.Login as User \n\tChoose :");
 				scanf("%d",&login);
 				switch (login)
@@ -129,7 +132,8 @@ int main()
 						switch(user)
 						{
 							case 1 :
-								printf("\n\t************CFSS REGISTRATION PAGE***********");
+								printf("\n\t**************************CFSS REGISTRATION PAGE*********************");
+								printf("%s",style);
 								printf("\n\tPress \n\t1.Activate Call Forwarding");
 								printf("\n\t2.Deactivate Call Forwarding ");
 								printf("\n\t3.Return to previous menu");
@@ -139,6 +143,7 @@ int main()
 								{
 									case 1 :
 										printf("\n\tCALL FORWARDING ACTIVATION PAGE");
+										printf("%s",style);
 										cfsActivation(headcfss,headupd, refId);
 										break;
 									case 2 :
@@ -157,7 +162,8 @@ int main()
 
 							case 2 :
 
-								printf("\n\t******CFSS DEREGISTRATION PAGE*******");
+								printf("\n\t************************CFSS DEREGISTRATION PAGE**********************");
+								printf("%s",style);
 								if(regFlag==1)
 								{
 									printf("\n\tDeregistered Successfully");

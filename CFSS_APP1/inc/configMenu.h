@@ -1,8 +1,8 @@
 
 /****************************************************************************************************
- * FILE NAME    : common.c
+ * FILE NAME    : configMenu.h
  *
- * DESCRIPTION  : Program to to extract Customer and cab driver details and perform login operation
+ * DESCRIPTION  : This files conatins 2 char arrays which is used in main.c 
  *                
  *
  * Revision History:
@@ -15,8 +15,9 @@
  *
  *******************************************************************************************************/
 
-/***************************************************************************
-*                           HEADER FILES
+/*******************************************************************************
+*                                  CHARACTER ARRAY
 *****************************************************************************/
-char WelCome[] = "\n\t=========================Welcome=========================\n";
+char WelCome[] = "\n\t============WELCOME TO CALL FORWARDING SYSTEM SIMULATOR===============\n";
+char style[] = "\n\t=========================================================================\n";
 char MainMenu[] = "\n\tPress,\n\t1. SignUp\n\t2. SingIn\n\t3. Exit\n\tChoice: ";

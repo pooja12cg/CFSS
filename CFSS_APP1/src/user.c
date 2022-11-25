@@ -75,14 +75,17 @@ void cfsActivation(CFSS *cfss, UPD *upd, int refID)
 		switch(cfs)
 		{
 			case 1:
+				printf("\n\t Call has been forwarded to Unconditional type ");
 				strcpy(cfss->status, "Unconditional");
 				break;
 			case 2:
+				printf("\n\t Call has been forwarded to No Reply type ");
 				strcpy(cfss->status, "No Reply");
 				
 				break;
 
 			case 3:
+				printf("\n\t Call has been forwarded to Busy type ");
 				strcpy(cfss->status, "Busy");
 				break;
 			default:

@@ -1,7 +1,8 @@
 /****************************************************************************************************
- * FILE NAME    : common.h
+ * FILE NAME      : common.h
  *
- * DESCRIPTION  : Program to to extract Customer and cab driver details and perform login operation
+ * DESCRIPTION    : This file contains header files, macros definitons and the function prototypes 
+ *                required for call forwarding services
  *                
  *
  * Revision History:
@@ -15,10 +16,14 @@
  *******************************************************************************************************/
 
 /***************************************************************************
-*                           HEADER FILES
+*                           MACROS DEFINITION
 *****************************************************************************/
 #ifndef COMMON_H
 #define COMMON_H
+
+/***************************************************************************
+*                           HEADER FILES
+*****************************************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,6 +31,10 @@
 #include <ctype.h>
 #include <unistd.h>
 
+
+/***************************************************************************
+*                             STRUCTURES
+*****************************************************************************/
 typedef struct userPersonalDetails
 {
 	int _id;
@@ -53,6 +62,10 @@ typedef struct callForwarding
 	char status[20];
 	struct callForwarding *next;
 }CFSS;
+
+/***************************************************************************
+*                           FUNCTION PROTOTYPE
+*****************************************************************************/
 
 UPD *signUp(UPD *, int*);
 LD *signInDetails(LD*, int);
@@ -86,4 +99,4 @@ void cfsDeactivation(CFSS *);
 
 void makeCall(UPD *, CFSS *, int );
 
-#endif
+#endif /*end of ifndef COMMON_H*/
