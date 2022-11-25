@@ -1,5 +1,32 @@
+/****************************************************************************************************
+ * FILE NAME       : main.c
+ *
+ * DESCRIPTION     : This file contains main function which calls all other function to
+ *                   perform required operation
+ *                
+ *
+ * Revision History:
+ *
+ * DATE         NAME                REFERENCE          REASON
+ ********************************************************************************************************
+ * 24-11-22    GROUP 04                New           Changes Committed
+ *********************************************************************************************************
+ * Copyright 2022, Altran Group All Rights Reserved
+ *
+ *******************************************************************************************************/
+
+/***************************************************************************
+*                           HEADER FILES
+*****************************************************************************/
 #include <common.h>
 #include <configMenu.h>
+
+/*******************************************************************
+ * FUNCTION NAME: main()
+ * DESCRIPTION  : main function which calls all other function to
+ *                perform required operation
+ * RETURNS      :  returns SUCCESS or FAILURE
+ *******************************************************************/
 
 int main()
 {	
@@ -10,10 +37,9 @@ int main()
 	CFSS *cfss = NULL;
 	CFSS *headcfss= NULL;
 
-	int login=0;
-	int user=0;
+	//int login=0;
 	int ch1=0;
-	int cfs=0;
+	int user=0;
 	int ch = 0, _id=0;
 	int regFlag=0;
 	int PhoneNo;
@@ -166,9 +192,9 @@ int main()
 				break;*/
 
 			case 3:
-				writeUPD(headupd);
-				writeLD(headld);
-				writeCFSS(headcfss);
+				writeUPD(headupd);/*function calling to store in the database PD.dat*/
+				writeLD(headld);/*function calling to store in the database LD.dat*/
+				writeCFSS(headcfss);/*function calling to store in the database CFSS.dat*/
 				printf("\n\t*******Thankyou for using CFSS*******\n\n");
 				exit(EXIT_SUCCESS);
 			default:

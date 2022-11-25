@@ -1,5 +1,36 @@
+
+/****************************************************************************************************
+ * FILE NAME    : common.c
+ *
+ * DESCRIPTION  : This file contails function definition required to perform call forwarding services
+ *                
+ *
+ * Revision History:
+ *
+ * DATE         NAME                REFERENCE          REASON
+ ********************************************************************************************************
+ * 24-11-22    GROUP 04                New           Changes Committed
+ *********************************************************************************************************
+ * Copyright 2022, Altran Group All Rights Reserved
+ *
+ *******************************************************************************************************/
+
+
+/***************************************************************************
+*                           HEADER FILES
+*****************************************************************************/
 #include <common.h>
 
+
+
+/*******************************************************************
+ **  FUNCTION_NAME  :   signUP
+ ** 
+ **  DESCRIPTION    :   This function takes user details and 
+                        store it in the database
+ **                        
+ **  RETURN_TYPE    :   returns success or failure
+ ************************************************************/
 UPD* signUp(UPD *upd,int *_id)
 {
 	UPD *newNode =NULL;
@@ -45,6 +76,14 @@ UPD* signUp(UPD *upd,int *_id)
 	return head;
 }
 
+
+/*******************************************************************
+ **  FUNCTION_NAME  :   initCFSS
+ ** 
+ **  DESCRIPTION    :   This function initializes CFSS
+ **                        
+ **  RETURN_TYPE    :   returns success or failure
+ ************************************************************/
 CFSS *initCFSS(CFSS *head, int id)
 {
 	CFSS *tmpHead = head;
@@ -77,6 +116,13 @@ CFSS *initCFSS(CFSS *head, int id)
 }
 
 
+/*******************************************************************
+ **  FUNCTION_NAME  :   signInDetails
+ ** 
+ **  DESCRIPTION    :   This function takes signIn details
+ **                        
+ **  RETURN_TYPE    :   returns success or failure
+ ************************************************************/
 LD* signInDetails(LD *ld, int _id)
 {
 	LD *newNode =NULL;
@@ -121,6 +167,14 @@ LD* signInDetails(LD *ld, int _id)
 	
 	return head;
 }
+/*******************************************************************
+ **  FUNCTION_NAME  :   signInUser
+ ** 
+ **  DESCRIPTION    :   This function is logging the user into 
+                        the system
+ **                        
+ **  RETURN_TYPE    :   returns success or failure
+ ************************************************************/
 int signInUser(LD *head, int *refID)
 {
 	LD _ld;
@@ -146,6 +200,14 @@ int signInUser(LD *head, int *refID)
 	return 0;
 }
 
+/*******************************************************************
+ **  FUNCTION_NAME  :   writeUPD
+ ** 
+ **  DESCRIPTION    :   This function write inputed user details 
+                        in PD.dat
+ **                        
+ **  RETURN_TYPE    :   returns success or failure
+ ************************************************************/
 
 int writeUPD(UPD *upd)
 {
@@ -173,6 +235,14 @@ int writeUPD(UPD *upd)
 	
 }
 
+/*******************************************************************
+ **  FUNCTION_NAME  :   writeLD
+ ** 
+ **  DESCRIPTION    :   This function write inputed login details
+                        in LD.dat
+ **                        
+ **  RETURN_TYPE    :   returns success or failure
+ ************************************************************/
 int writeLD(LD *ld)
 {
 	FILE *fp = NULL;
@@ -199,6 +269,14 @@ int writeLD(LD *ld)
 	
 }
 
+/*******************************************************************
+ **  FUNCTION_NAME  :   writeCFSS
+ ** 
+ **  DESCRIPTION    :   This function write inputed CFSS details
+                        in CFSS.dat
+ **                        
+ **  RETURN_TYPE    :   returns success or failure
+ ************************************************************/
 int writeCFSS(CFSS *cfss)
 {
 	FILE *fp = NULL;
@@ -226,6 +304,14 @@ int writeCFSS(CFSS *cfss)
 }
 
 
+/*******************************************************************
+ **  FUNCTION_NAME  :   loadUPD
+ ** 
+ **  DESCRIPTION    :   This function loads inputed user details
+                        in PD.dat
+ **                        
+ **  RETURN_TYPE    :   returns success or failure
+ ************************************************************/
 UPD* loadUPD()
 {
 	FILE *fp = NULL;
@@ -286,6 +372,14 @@ UPD* loadUPD()
 
 }
 
+/*******************************************************************
+ **  FUNCTION_NAME  :   loadLD
+ ** 
+ **  DESCRIPTION    :   This function loads inputed Login details
+                        in PD.dat
+ **                        
+ **  RETURN_TYPE    :   returns success or failure
+ ************************************************************/
 
 LD* loadLD()
 {
@@ -346,6 +440,14 @@ LD* loadLD()
 
 }
 
+/*******************************************************************
+ **  FUNCTION_NAME  :   loadCFSS
+ ** 
+ **  DESCRIPTION    :   This function loads inputed CFSS details
+                        in CFSS.dat
+ **                        
+ **  RETURN_TYPE    :   returns success or failure
+ ************************************************************/
 CFSS* loadCFSS()
 {
 	FILE *fp = NULL;
@@ -403,6 +505,14 @@ CFSS* loadCFSS()
 
 }
 
+/*******************************************************************
+ **  FUNCTION_NAME  :   readCFSS
+ ** 
+ **  DESCRIPTION    :   This function reads inputed CFSSr details
+                        in CFSS.dat
+ **                        
+ **  RETURN_TYPE    :   returns success or failure
+ ************************************************************/
 int readCFSS(CFSS *cfss)
 {
 	FILE *fp = NULL;
@@ -430,6 +540,14 @@ int readCFSS(CFSS *cfss)
 
 
 }
+/*******************************************************************
+ **  FUNCTION_NAME  :   readUPD
+ ** 
+ **  DESCRIPTION    :   This function reads inputed read details
+                         in PD.dat
+ **                        
+ **  RETURN_TYPE    :   returns success or failure
+ ************************************************************/
 int readUPD(UPD *upd)
 {
 	FILE *fp = NULL;
@@ -460,6 +578,14 @@ int readUPD(UPD *upd)
 
 
 
+/*******************************************************************
+ **  FUNCTION_NAME  :   tokenizeCFSS
+ ** 
+ **  DESCRIPTION    :   This function reads  CFSS details word by word, 
+                        and return a null at the end of the line
+ **                       
+ **  RETURN_TYPE    :   returns success or failure
+ ************************************************************/
 int tokenizeCFSS(CFSS *cfss, char *tmpBuff)
 {
 	char *tokens;
@@ -488,6 +614,14 @@ int tokenizeCFSS(CFSS *cfss, char *tmpBuff)
 	return 0;
 
 }
+/*******************************************************************
+ **  FUNCTION_NAME  :   tokenizeUPD
+ ** 
+ **  DESCRIPTION    :   This function reads  user details word by word 
+                        and return a null at the end of the line
+ **                        
+ **  RETURN_TYPE    :   returns success or failure
+ ************************************************************/
 int tokenizeUPD(UPD *upd, char *tmpBuff)
 {
 	char *tokens;
@@ -516,6 +650,14 @@ int tokenizeUPD(UPD *upd, char *tmpBuff)
 }
 
 
+/*******************************************************************
+ **  FUNCTION_NAME  :   tokenizeLD
+ ** 
+ **  DESCRIPTION    :   This function reads LD details word by 
+                        word and return a null at the end of the line
+ **                        
+ **  RETURN_TYPE    :   returns success or failure
+ ************************************************************/
 int tokenizeLD(LD *ld, char *tmpBuff)
 {
 	char *tokens;
@@ -533,6 +675,15 @@ int tokenizeLD(LD *ld, char *tmpBuff)
 	return 0;
 }
 
+/*******************************************************************
+ **  FUNCTION_NAME  :   removeLeading
+ ** 
+ **  DESCRIPTION    :   This function removes any leading  
+                        newline and whitespace from the string
+			(before the first character)
+ **                        
+ **  RETURN_TYPE    :   returns success or failure
+ ************************************************************/
 void removeLeading(char *str, char *str1)
 {
     int idx = 0, j, k = 0;
@@ -551,6 +702,15 @@ void removeLeading(char *str, char *str1)
     str1[k] = '\0';
  
 }
+/*******************************************************************
+ **  FUNCTION_NAME  :   removeTrailing
+ ** 
+ **  DESCRIPTION    :   This function removes any trailing 
+                        newline and whitespace from the string
+			(after the final character)
+ **                        
+ **  RETURN_TYPE    :   returns success or failure
+ ************************************************************/
 void removeTrailing(char *str)
 {
 	if((str[strlen(str)-1] == ' ' || str[strlen(str)-1] == '\t' || str[strlen(str)-1] == '\n'))

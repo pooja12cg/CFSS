@@ -1,4 +1,33 @@
+/****************************************************************************************************
+ * FILE NAME    : user.c
+ *
+ * DESCRIPTION  : This file contains function to perform user call forwarding operation
+ *                
+ *
+ * Revision History:
+ *
+ * DATE         NAME                REFERENCE          REASON
+ ********************************************************************************************************
+ * 24-11-22    GROUP 04                New           Changes Committed
+ *********************************************************************************************************
+ * Copyright 2022, Altran Group All Rights Reserved
+ *
+ *******************************************************************************************************/
+
+/***************************************************************************
+*                           HEADER FILES
+*****************************************************************************/
+
 #include <common.h>
+
+
+/*******************************************************************
+ * FUNCTION NAME: cfsActivation()
+ *
+ * DESCRIPTION  : This function is for Call Forwarding Activation
+ *
+ * RETURNS      :  returns SUCCESS or FAILURE
+ *******************************************************************/
 void cfsActivation(CFSS *cfss, UPD *upd, int refID)
 {
 	int cfsActive=0;
@@ -67,9 +96,22 @@ void cfsActivation(CFSS *cfss, UPD *upd, int refID)
 	}
 
 }
+
+/*******************************************************************
+ * FUNCTION NAME: cfsDeactivation
+ *
+ * DESCRIPTION  : This function is used for deactivating 
+ *                Call Forwarding Services
+ *
+ * RETURNS      :  returns SUCCESS or FAILURE
+ *******************************************************************/
 void cfsDeactivation(CFSS *cfss)
 {
-	/*if(cfsActive==0)
+	int cfsActive=0;
+	
+	printf("\n\tDo you want to deactivate the call(0/1):");
+	scanf("%d",&cfsActive);
+	if(cfsActive==0)
 	{
 		printf("\n\t User has not activated Call forwarding services ");
 	}
@@ -77,11 +119,17 @@ void cfsDeactivation(CFSS *cfss)
 	{
 		printf("\n\tDeactivation Successful");
 		cfsActive = 0;
-	}*/
-	//head = head->next;
+	}
 
 }
 
+/*******************************************************************
+ * FUNCTION NAME: makeCall
+ *
+ * DESCRIPTION  : This function is used for making a call
+ * 
+ * RETURNS      :  returns SUCCESS or FAILURE
+ *******************************************************************/
 void makeCall(UPD *hupd, CFSS *hcfss, int phno)
 {
 	int refID = 0, flag =0;
@@ -95,7 +143,7 @@ void makeCall(UPD *hupd, CFSS *hcfss, int phno)
 			break;
 
 		}
-		hupd = hupd->next;
+		hupd = hupd->next;/*pointing to the next element*/
 	}
 
 	if(flag == 1)
@@ -107,7 +155,7 @@ void makeCall(UPD *hupd, CFSS *hcfss, int phno)
 				flag++;
 				break;
 			}
-			hcfss = hcfss->next;
+			hcfss = hcfss->next;/*pointing to the next element*/
 		}
 
 		
