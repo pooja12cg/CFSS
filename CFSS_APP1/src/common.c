@@ -1,32 +1,5 @@
-/****************************************************************************************************
- * FILE NAME    : common.c
- *
- * DESCRIPTION  : Program to to extract Customer and cab driver details and perform login operation
- *                
- *
- * Revision History:
- *
- * DATE         NAME                REFERENCE          REASON
- ********************************************************************************************************
- * 24-11-22    GROUP 04                New           Changes Committed
- *********************************************************************************************************
- * Copyright 2022, Altran Group All Rights Reserved
- *
- *******************************************************************************************************/
-
-/***************************************************************************
-*                           HEADER FILES
-*****************************************************************************/
-
 #include <common.h>
 
-/*******************************************************************
- * FUNCTION NAME: get_string
- * DESCRIPTION  : gets the a line from standerd input to the i th
- *        	       element of array
- * ARGUMENTD    :   Array of strings to be stored in 
- * RETURNS      :  returns SUCCESS or FAILURE
- *******************************************************************/
 UPD* signUp(UPD *upd,int *_id)
 {
 	UPD *newNode =NULL;
@@ -72,13 +45,6 @@ UPD* signUp(UPD *upd,int *_id)
 	return head;
 }
 
-/*******************************************************************
- * FUNCTION NAME: get_string
- * DESCRIPTION  : gets the a line from standerd input to the i th
- *        	       element of array
- * ARGUMENTD    :   Array of strings to be stored in 
- * RETURNS      :  returns SUCCESS or FAILURE
- *******************************************************************/
 CFSS *initCFSS(CFSS *head, int id)
 {
 	CFSS *tmpHead = head;
@@ -111,13 +77,6 @@ CFSS *initCFSS(CFSS *head, int id)
 }
 
 
-/*******************************************************************
- * FUNCTION NAME: get_string
- * DESCRIPTION  : gets the a line from standerd input to the i th
- *        	       element of array
- * ARGUMENTD    :   Array of strings to be stored in 
- * RETURNS      :  returns SUCCESS or FAILURE
- *******************************************************************/
 LD* signInDetails(LD *ld, int _id)
 {
 	LD *newNode =NULL;
@@ -138,6 +97,7 @@ LD* signInDetails(LD *ld, int _id)
 		//records are present
 		while(ld->next != NULL)
 			ld = ld->next;
+
 		ld->next = newNode;
 		ld = ld->next;
 	}
@@ -161,13 +121,6 @@ LD* signInDetails(LD *ld, int _id)
 	
 	return head;
 }
-/*******************************************************************
- * FUNCTION NAME: get_string
- * DESCRIPTION  : gets the a line from standerd input to the i th
- *        	       element of array
- * ARGUMENTD    :   Array of strings to be stored in 
- * RETURNS      :  returns SUCCESS or FAILURE
- *******************************************************************/
 int signInUser(LD *head, int *refID)
 {
 	LD _ld;
@@ -194,13 +147,6 @@ int signInUser(LD *head, int *refID)
 }
 
 
-/*******************************************************************
- * FUNCTION NAME: get_string
- * DESCRIPTION  : gets the a line from standerd input to the i th
- *        	       element of array
- * ARGUMENTD    :   Array of strings to be stored in 
- * RETURNS      :  returns SUCCESS or FAILURE
- *******************************************************************/
 int writeUPD(UPD *upd)
 {
 	FILE *fp = NULL;
@@ -227,13 +173,6 @@ int writeUPD(UPD *upd)
 	
 }
 
-/*******************************************************************
- * FUNCTION NAME: get_string
- * DESCRIPTION  : gets the a line from standerd input to the i th
- *        	       element of array
- * ARGUMENTD    :   Array of strings to be stored in 
- * RETURNS      :  returns SUCCESS or FAILURE
- *******************************************************************/
 int writeLD(LD *ld)
 {
 	FILE *fp = NULL;
@@ -260,13 +199,6 @@ int writeLD(LD *ld)
 	
 }
 
-/*******************************************************************
- * FUNCTION NAME: get_string
- * DESCRIPTION  : gets the a line from standerd input to the i th
- *        	       element of array
- * ARGUMENTD    :   Array of strings to be stored in 
- * RETURNS      :  returns SUCCESS or FAILURE
- *******************************************************************/
 int writeCFSS(CFSS *cfss)
 {
 	FILE *fp = NULL;
@@ -293,13 +225,6 @@ int writeCFSS(CFSS *cfss)
 	
 }
 
-/*******************************************************************
- * FUNCTION NAME: get_string
- * DESCRIPTION  : gets the a line from standerd input to the i th
- *        	       element of array
- * ARGUMENTD    :   Array of strings to be stored in 
- * RETURNS      :  returns SUCCESS or FAILURE
- *******************************************************************/
 
 UPD* loadUPD()
 {
@@ -340,6 +265,7 @@ UPD* loadUPD()
 				head = newNode;
 				upd = newNode;
 				tokenizeUPD(newNode, tmpBuff);
+						
 			}
 			else /* rest of the records */
 			{
@@ -348,7 +274,6 @@ UPD* loadUPD()
 				upd->next = newNode;
 				tokenizeUPD(newNode, tmpBuff);
 				upd = upd->next;
-                                
 			}
 			memset(tmpBuff,'\0', 512);
 
@@ -361,13 +286,6 @@ UPD* loadUPD()
 
 }
 
-/*******************************************************************
- * FUNCTION NAME: get_string
- * DESCRIPTION  : gets the a line from standerd input to the i th
- *        	       element of array
- * ARGUMENTD    :   Array of strings to be stored in 
- * RETURNS      :  returns SUCCESS or FAILURE
- *******************************************************************/
 
 LD* loadLD()
 {
@@ -417,6 +335,7 @@ LD* loadLD()
 				ld = ld->next;	
 			}
 			memset(tmpBuff,'\0', 512);
+			
 
 		}
 
@@ -427,13 +346,6 @@ LD* loadLD()
 
 }
 
-/*******************************************************************
- * FUNCTION NAME: get_string
- * DESCRIPTION  : gets the a line from standerd input to the i th
- *        	       element of array
- * ARGUMENTD    :   Array of strings to be stored in 
- * RETURNS      :  returns SUCCESS or FAILURE
- *******************************************************************/
 CFSS* loadCFSS()
 {
 	FILE *fp = NULL;
@@ -481,7 +393,7 @@ CFSS* loadCFSS()
 				cfss = cfss->next;	
 			}
 			memset(tmpBuff,'\0', 512);
-			
+
 		}
 
 	}
@@ -491,13 +403,6 @@ CFSS* loadCFSS()
 
 }
 
-/*******************************************************************
- * FUNCTION NAME: get_string
- * DESCRIPTION  : gets the a line from standerd input to the i th
- *        	       element of array
- * ARGUMENTD    :   Array of strings to be stored in 
- * RETURNS      :  returns SUCCESS or FAILURE
- *******************************************************************/
 int readCFSS(CFSS *cfss)
 {
 	FILE *fp = NULL;
@@ -523,15 +428,8 @@ int readCFSS(CFSS *cfss)
 	fclose(fp);
 	return 0;
 
-}
 
-/*******************************************************************
- * FUNCTION NAME: get_string
- * DESCRIPTION  : gets the a line from standerd input to the i th
- *        	       element of array
- * ARGUMENTD    :   Array of strings to be stored in 
- * RETURNS      :  returns SUCCESS or FAILURE
- *******************************************************************/
+}
 int readUPD(UPD *upd)
 {
 	FILE *fp = NULL;
@@ -561,13 +459,6 @@ int readUPD(UPD *upd)
 
 
 
-/*******************************************************************
- * FUNCTION NAME: get_string
- * DESCRIPTION  : gets the a line from standerd input to the i th
- *        	       element of array
- * ARGUMENTD    :   Array of strings to be stored in 
- * RETURNS      :  returns SUCCESS or FAILURE
- *******************************************************************/
 
 int tokenizeCFSS(CFSS *cfss, char *tmpBuff)
 {
@@ -577,18 +468,7 @@ int tokenizeCFSS(CFSS *cfss, char *tmpBuff)
 	{
 	tokens = strtok(tmpBuff, ",");
 	cfss->_id = atoi(tokens);
- 	
-	tokens=strtok(NULL , ",");
-	cfss->regFlag = atoi(tokens);
 
- 	tokens=strtok(NULL , ",");
-	cfss->cfsNumber=atoi(tokens);
-
-
- 	tokens=strtok(NULL , ",");
-	cfss->cfsActive = atoi(tokens);
-	
- 
 	tokens = strtok(NULL, ",");
 	cfss->regFlag = atoi(tokens);
 
@@ -600,17 +480,14 @@ int tokenizeCFSS(CFSS *cfss, char *tmpBuff)
 
 	tokens = strtok(NULL, ",");
 	removeLeading(tokens,cfss->status);
-        cfss->status[strlen(cfss->status)-1] = '\0';
+	cfss->status[strlen(cfss->status)-1] = '\0';
 	}
+
+
+	//cfs->_gender = tokens[0];
 	return 0;
+
 }
-/*******************************************************************
- * FUNCTION NAME: get_string
- * DESCRIPTION  : gets the a line from standerd input to the i th
- *        	       element of array
- * ARGUMENTD    :   Array of strings to be stored in 
- * RETURNS      :  returns SUCCESS or FAILURE
- *******************************************************************/
 int tokenizeUPD(UPD *upd, char *tmpBuff)
 {
 	char *tokens;
@@ -623,11 +500,10 @@ int tokenizeUPD(UPD *upd, char *tmpBuff)
 	tokens = strtok(NULL, ",");
 	upd->_phNo = atoi(tokens);
 
+
 	tokens = strtok(NULL, ",");
 	removeLeading(tokens,upd->_uName);
 	
-
-
 	tokens = strtok(NULL, ",");
 	removeLeading(tokens,tokens);
 	upd->_gender=tokens[0];
@@ -640,19 +516,10 @@ int tokenizeUPD(UPD *upd, char *tmpBuff)
 }
 
 
-/*******************************************************************
- * FUNCTION NAME: get_string
- * DESCRIPTION  : gets the a line from standerd input to the i th
- *        	       element of array
- * ARGUMENTD    :   Array of strings to be stored in 
- * RETURNS      :  returns SUCCESS or FAILURE
- *******************************************************************/
 int tokenizeLD(LD *ld, char *tmpBuff)
 {
 	char *tokens;
 
-	if(tmpBuff!=NULL)
-	{
 	tokens = strtok(tmpBuff, ",");
 	ld->_id = atoi(tokens);
 
@@ -661,19 +528,11 @@ int tokenizeLD(LD *ld, char *tmpBuff)
 	
 	tokens = strtok(NULL, ",");
 	removeLeading(tokens,ld->_passwd);
-        ld->_passwd[strlen(ld->_passwd)-1] = '\0';
-
-	}
+	ld->_passwd[strlen(ld->_passwd)-1] = '\0';
+	//dispPD(pd);
 	return 0;
 }
 
-/*******************************************************************
- * FUNCTION NAME: get_string
- * DESCRIPTION  : gets the a line from standerd input to the i th
- *        	       element of array
- * ARGUMENTD    :   Array of strings to be stored in 
- * RETURNS      :  returns SUCCESS or FAILURE
- *******************************************************************/
 void removeLeading(char *str, char *str1)
 {
     int idx = 0, j, k = 0;
@@ -692,13 +551,6 @@ void removeLeading(char *str, char *str1)
     str1[k] = '\0';
  
 }
-/*******************************************************************
- * FUNCTION NAME: get_string
- * DESCRIPTION  : gets the a line from standerd input to the i th
- *        	       element of array
- * ARGUMENTD    :   Array of strings to be stored in 
- * RETURNS      :  returns SUCCESS or FAILURE
- *******************************************************************/
 void removeTrailing(char *str)
 {
 	if((str[strlen(str)-1] == ' ' || str[strlen(str)-1] == '\t' || str[strlen(str)-1] == '\n'))

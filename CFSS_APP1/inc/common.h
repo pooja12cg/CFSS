@@ -1,5 +1,3 @@
-
-
 #ifndef COMMON_H
 #define COMMON_H
 
@@ -7,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <unistd.h>
 
 typedef struct userPersonalDetails
 {

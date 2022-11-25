@@ -1,45 +1,19 @@
-
-/****************************************************************************************************
- * FILE NAME    : main.c
- *
- * DESCRIPTION  : Program to to extract Customer and cab driver details and perform login operation
- *                
- *
- * Revision History:
- *
- * DATE         NAME                REFERENCE          REASON
- ********************************************************************************************************
- * 24-11-22    GROUP 04                New           Changes Committed
- *********************************************************************************************************
- * Copyright 2022, Altran Group All Rights Reserved
- *
- *******************************************************************************************************/
-
-/******************************************************************
- * 	              HEADER FILE
- **************************************************************/
 #include <common.h>
 #include <configMenu.h>
 
-/*******************************************************************
- * FUNCTION_NAME  :   main
- * DESCRIPTION    :   It takes the strings from user and search
- *                        
- * RETURN_TYPE    :   returns success or failure
- ************************************************************/
 int main()
 {	
-
-	UPD *headupd = NULL;
 	UPD *upd = NULL;
-	LD *headld = NULL;
+	UPD *headupd = NULL;
 	LD *ld = NULL;
-	CFSS *headcfss= NULL;
+	LD *headld = NULL;
 	CFSS *cfss = NULL;
+	CFSS *headcfss= NULL;
 
 	int login=0;
 	int user=0;
 	int ch1=0;
+	int cfs=0;
 	int ch = 0, _id=0;
 	int regFlag=0;
 	int PhoneNo;
@@ -56,10 +30,8 @@ int main()
 
 	while(1){
 
-		
-		printf("%s", style);
+		system("clear");
 		printf("%s", WelCome);
-		printf("%s", style);
 		printf("%s", MainMenu);
 		scanf("%d",&ch);
 		
@@ -84,8 +56,7 @@ int main()
 			case 2:
 				//readPD(headpd);
 
-				printf("\n\t***********************LOGIN PAGE ************************");
-				printf("%s", style);
+				printf("\n\t******************LOGIN PAGE ****************");
 				printf("\n\tPress \n\t1.Login as Admin \n\t2.Login as User \n\tChoose :");
 				scanf("%d",&login);
 				switch (login)
@@ -121,20 +92,19 @@ int main()
 						else
 						{
 
-							printf("\n\t\t*****SUCCESSFULLY LOGGED IN*****\n");
+							printf("\n\tSUCCESSFULLY LOGGED IN\n");
 							
 						}
 
-						printf("\n\n\tPress \n\t1.Register for CFSS \n\t2.Unregister for CFSS \n\t3.Make	a call \n\t4.Exit ");
+						printf("\n\tPress \n\t1.Register for CFSS \n\t2.Unregister for CFSS \n\t3.Make	a call \n\t4.Exit ");
 						printf("\n\tEnter your Choice : ");
 						scanf("%d",&user);
 						
 						switch(user)
 						{
 							case 1 :
-								printf("\n\t********************CFSS REGISTRATION PAGE***********************");
-								printf("%s", style);
-								printf("\n\n\tPress \n\t1.Activate Call Forwarding");
+								printf("\n\t************CFSS REGISTRATION PAGE***********");
+								printf("\n\tPress \n\t1.Activate Call Forwarding");
 								printf("\n\t2.Deactivate Call Forwarding ");
 								printf("\n\t3.Return to previous menu");
 								printf("\n\tEnter your Choice : ");
@@ -142,13 +112,11 @@ int main()
 								switch(ch1)
 								{
 									case 1 :
-										printf("\n\t***************CALL FORWARDING ACTIVATION PAGE**************\n");
-										printf("%s",style);
+										printf("\n\tCALL FORWARDING ACTIVATION PAGE");
 										cfsActivation(headcfss,headupd, refId);
 										break;
 									case 2 :
-										printf("\n\t***************CALL FORWARDING DEACTIVATION PAGE*************\n");
-										printf("%s",style);
+										//printf("\n\t3.Return to deactive menu");
 										cfsDeactivation(headcfss);
 										break;
 									case 3 :
@@ -158,14 +126,12 @@ int main()
 									default :
 										printf("\n\tEnter a correct Choice");
 								}
-								sleep(2);
 								user=0;
 								break;
 
 							case 2 :
 
-								printf("\n\t*********************CFSS DEREGISTRATION PAGE********************");
-								printf("%s", style);
+								printf("\n\t******CFSS DEREGISTRATION PAGE*******");
 								if(regFlag==1)
 								{
 									printf("\n\tDeregistered Successfully");
@@ -177,17 +143,20 @@ int main()
 								}
 								break;
 
+
+
+
+
 							case 3:
+								//int PhoneNo;
 								printf("\n\tEnter the number You want to make a call: ");
 								scanf("%d",&PhoneNo);
 								makeCall(headupd , headcfss, PhoneNo);
-								break;
 							case 4 :
 								exit(EXIT_SUCCESS);
 							default :
 								printf("\n\tPlease Enter a Correct Choice ");
 						}
-						sleep(2);
 						break;
 
 					default:
@@ -208,6 +177,7 @@ int main()
 		}
 
 	}
+
 
 	printf("\n\n");
 
