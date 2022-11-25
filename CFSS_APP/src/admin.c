@@ -12,7 +12,7 @@
 
 
 /*******************************************************************
- * FUNCTION_NAME  :   main
+ * FUNCTION_NAME  :   admin login()
  * DESCRIPTION    :   It takes the strings from user and search
  *                        
  * RETURN_TYPE    :   returns success or failure
