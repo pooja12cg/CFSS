@@ -57,12 +57,12 @@ int main()
 				//readPD(headpd);
 
 				printf("\n\t******************LOGIN PAGE ****************");
-				printf("\n\tPress \n\t1.Login as Admin \n\t2.Login as User \n\tChoose :");
+				/*printf("\n\tPress \n\t1.Login as Admin \n\t2.Login as User \n\tChoose :");
 				scanf("%d",&login);
 				switch (login)
 				{
 					case 1:
-						/*AdminLogin();
+						AdminLogin();
 						printf("\n\tSUCCESSFULLY LOGGED IN\n");
 						printf("\n\nPress \n\t1.Update \n\t2.Delete \n\tChoose :");
 						scanf("%d",&admin);
@@ -81,9 +81,9 @@ int main()
 								break;
 						}
 
-						admin=0;*/
+						admin=0;
 						break;
-					case 2:
+					case 2:*/
 						if(signInUser(headld, &refId) == 0)
 						{
 							printf("\n\tUser/password does not match db\n");
@@ -159,11 +159,11 @@ int main()
 						}
 						break;
 
-					default:
+					/*default:
 						printf("\n\tEnter a Correct Choice");
 				}
 				login=0;
-				break;
+				break;*/
 
 			case 3:
 				writeUPD(headupd);
